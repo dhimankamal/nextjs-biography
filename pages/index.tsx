@@ -1,6 +1,14 @@
+import { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
+import { prisma } from "@/lib/db";
+import { Post } from "@prisma/client";
 
-const Home = () => {
+interface Props {
+  post: Post[];
+}
+
+const Home: NextPage<Props> = ({ post }) => {
+  console.log("post", post);
   return (
     <>
       <Head>
@@ -12,6 +20,19 @@ const Home = () => {
       <h1 className="text-3xl font-bold underline">Hello world!</h1>
     </>
   );
+};
+
+export const getStaticProps: GetStaticProps = async () => {
+  let post: Post[] = [];
+  try {
+    post = await prisma.post.findMany();
+  } catch (error) {
+    console.log(error);
+  }
+
+  return {
+    props: { post },
+  };
 };
 
 export default Home;
