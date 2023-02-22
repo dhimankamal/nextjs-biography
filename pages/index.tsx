@@ -8,7 +8,9 @@ interface Props {
 }
 
 const Home: NextPage<Props> = ({ post }) => {
-  console.log("post", post);
+
+  let data = post[0].content;
+  console.log('post', data?.rendered)
   return (
     <>
       <Head>
@@ -17,7 +19,13 @@ const Home: NextPage<Props> = ({ post }) => {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-      <h1 className="text-3xl font-bold underline">Hello world!</h1>
+      <div className="border-2 p-10">
+        <h1 className="text-3xl font-bold underline">Hello world!</h1>
+
+      </div>
+      {data?.rendered &&  <div dangerouslySetInnerHTML={{ __html: data?.rendered }} />}
+     
+     
     </>
   );
 };
@@ -29,7 +37,6 @@ export const getStaticProps: GetStaticProps = async () => {
   } catch (error) {
     console.log(error);
   }
-
   return {
     props: { post },
   };
