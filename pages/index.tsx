@@ -39,7 +39,7 @@ const Home: NextPage<Props> = ({ post }) => {
                       className="leading-relaxed"
                       dangerouslySetInnerHTML={{ __html: val.excerpt.rendered }}
                     ></div>
-                    <a className="text-indigo-500 inline-flex items-center mt-4">
+                    <a href={val.slug} className="text-indigo-500 inline-flex items-center mt-4">
                       Learn More
                       <svg
                         className="w-4 h-4 ml-2"

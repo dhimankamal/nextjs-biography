@@ -19,3 +19,17 @@ a {
 * {
   box-sizing: border-box;
 }
+.markdown{
+  text-align: center;
+}
+.markdown p{
+  padding: 20px 0;
+}
+.markdown img{
+  margin: 0 auto;
+  border-radius: 10px;
+}
+.markdown h3 {
+  @apply text-2xl font-bold;
+}
+

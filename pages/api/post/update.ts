@@ -1,6 +1,24 @@
 import type { NextApiRequest, NextApiResponse } from 'next'
+ import { NodeHtmlMarkdown, NodeHtmlMarkdownOptions } from 'node-html-markdown'
 import axios from 'axios';
 import { prisma } from "@/lib/db";
+const turndownService = require('turndown');
+const turndown = new turndownService();
+
+turndown.addRule('script', {
+  filter: 'script',
+  replacement: function() {
+    return '';
+  }
+});
+
+
+turndown.addRule('table', {
+    filter: 'table',
+    replacement: function(content) {
+      return content;
+    }
+  });
 
 type Data = {
   name: string
@@ -37,11 +55,16 @@ const updatePostData = async () => {
      
         for (const post of updateData) {
             const { id, date, slug, title, content, excerpt, categories, tags, featured_media } = post;
+            const markdown = NodeHtmlMarkdown.translate(content.rendered);
+           
+           // const markdown = turndown.turndown(content.rendered);
+            
+            //console.log('markdown', markdown)
             const postObj = {
                 postid: String(id),
                 date,
                 slug,
-                content,
+                content:markdown,
                 title: title.rendered,
                 excerpt,
                 categories,
