@@ -55,16 +55,16 @@ const updatePostData = async () => {
      
         for (const post of updateData) {
             const { id, date, slug, title, content, excerpt, categories, tags, featured_media } = post;
-            const markdown = NodeHtmlMarkdown.translate(content.rendered);
+           // const markdown = NodeHtmlMarkdown.translate(content.rendered);
            
-           // const markdown = turndown.turndown(content.rendered);
+            const markdown = turndown.turndown(content.rendered);
             
             //console.log('markdown', markdown)
             const postObj = {
                 postid: String(id),
                 date,
                 slug,
-                content:markdown,
+                content:content.rendered,
                 title: title.rendered,
                 excerpt,
                 categories,

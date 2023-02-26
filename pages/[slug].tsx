@@ -34,7 +34,7 @@ const Post: NextPage<Props> = ({ post }) => {
   return (
     <>
       <div className="container mx-auto">
-      <div className="markdown">
+      <div className="markdown" >
       <ReactMarkdown>{markdownContent}</ReactMarkdown>
     </div>
       </div>
