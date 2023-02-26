@@ -2,6 +2,7 @@ import { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
 import { prisma } from "@/lib/db";
 import { Post } from "@prisma/client";
+const cheerio = require('cheerio');
 
 interface Props {
   post: Post[];
@@ -20,8 +21,11 @@ const Home: NextPage<Props> = ({ post }) => {
       <section className="text-gray-600 body-font overflow-hidden">
         <div className="container px-5 py-24 mx-auto">
           {post.map(val => {
+            const $ = cheerio.load(val.content);
+            const firstImageUrl = $('img').first().attr('src');
+            console.log(firstImageUrl); // Output: "https://example.com/image1.jpg"
             return (
-              <div key={val.id} className="-my-8 divide-y-2 divide-gray-100">
+              <div key={val.id} className="border-b">
                 <div className="py-8 flex flex-wrap md:flex-nowrap">
                   <div className="md:w-64 md:mb-0 mb-6 flex-shrink-0 flex flex-col">
                     <span className="font-semibold title-font text-gray-700">
@@ -31,7 +35,7 @@ const Home: NextPage<Props> = ({ post }) => {
                       {val.date}
                     </span>
                   </div>
-                  <div className="md:flex-grow">
+                  <div className="md:flex-grow" >
                     <h2 className="text-2xl font-medium text-gray-900 title-font mb-2"  dangerouslySetInnerHTML={{ __html: val.title }} >
                       
                     </h2>
@@ -55,6 +59,7 @@ const Home: NextPage<Props> = ({ post }) => {
                       </svg>
                     </a>
                   </div>
+             
                 </div>
               </div>
             );
@@ -68,7 +73,11 @@ const Home: NextPage<Props> = ({ post }) => {
 export const getStaticProps: GetStaticProps = async () => {
   let post: Post[] = [];
   try {
-    post = await prisma.post.findMany();
+    post = await prisma.post.findMany({
+      orderBy: {
+        date: "desc",
+      },
+    });
   } catch (error) {
     console.log(error);
   }

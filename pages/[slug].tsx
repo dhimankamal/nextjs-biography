@@ -32,10 +32,11 @@ const Post: NextPage<Props> = ({ post }) => {
   return (
     <>
       <div className="container mx-auto grid grid-cols-3 gap-8">
-        <div className="post col-span-2 rounded-lg border p-10">
+        <div className="post col-span-2 rounded-lg border p-10 shadow-xl">
+          <h1 className="text-3xl font-bold" dangerouslySetInnerHTML={{ __html: post.title }}></h1>
           <div dangerouslySetInnerHTML={{ __html: cleanHtmlString }}></div>
         </div>
-        <div className="border col-span-1 rounded-lg"> side</div>
+        <div className="border col-span-1 rounded-lg shadow-xl"> side</div>
       </div>
     </>
   );
