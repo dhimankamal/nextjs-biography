@@ -19,17 +19,32 @@ a {
 * {
   box-sizing: border-box;
 }
-.markdown{
+.post{
   text-align: center;
 }
-.markdown p{
+.post p{
   padding: 20px 0;
 }
-.markdown img{
-  margin: 0 auto;
-  border-radius: 10px;
+.post img{
+  @apply my-2 mx-auto rounded-3xl;
+ 
 }
-.markdown h3 {
+.post h3 {
   @apply text-2xl font-bold;
 }
 
+.post table {
+  @apply mx-auto my-2;
+}
+
+.post table th{
+  @apply border text-2xl p-10;
+}
+
+.post table td {
+  @apply border text-xl p-4 text-left;
+}
+
+.post table img {
+  @apply my-10 rounded-3xl;
+}
