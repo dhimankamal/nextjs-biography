@@ -19,17 +19,20 @@ a {
 * {
   box-sizing: border-box;
 }
-.post{
+.post {
   text-align: center;
 }
-.post p{
+.post p {
   padding: 20px 0;
 }
-.post img{
+.post img {
   @apply my-2 mx-auto rounded-3xl;
- 
 }
-.post h3 {
+.post h2 {
+  @apply text-3xl font-bold mb-4;
+}
+.post h3,
+.post h4 {
   @apply text-2xl font-bold;
 }
 
@@ -37,7 +40,7 @@ a {
   @apply mx-auto my-2;
 }
 
-.post table th{
+.post table th {
   @apply border text-2xl p-10;
 }
 
@@ -48,3 +51,14 @@ a {
 .post table img {
   @apply my-10 rounded-3xl;
 }
+
+.accessibility {
+  @apply text-xl font-bold py-4;
+}
+.footnote_backlink {
+  display: none;
+}
+.post li{
+  @apply py-2;
+}
+

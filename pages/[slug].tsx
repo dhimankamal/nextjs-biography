@@ -2,7 +2,6 @@ import { NextPage, GetStaticPaths, GetStaticProps } from "next";
 import { prisma } from "@/lib/db";
 import { Post } from "@prisma/client";
 import { useEffect, useState } from "react";
-import ReactMarkdown from "react-markdown";
 
 interface Props {
   post: Post;
