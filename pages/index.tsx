@@ -2,7 +2,7 @@ import { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
 import { prisma } from "@/lib/db";
 import { Post } from "@prisma/client";
-const cheerio = require('cheerio');
+const cheerio = require("cheerio");
 
 interface Props {
   post: Post[];
@@ -22,28 +22,33 @@ const Home: NextPage<Props> = ({ post }) => {
         <div className="container px-5 py-24 mx-auto">
           {post.map(val => {
             const $ = cheerio.load(val.content);
-            const firstImageUrl = $('img').first().attr('src');
-            console.log(firstImageUrl); // Output: "https://example.com/image1.jpg"
+            const firstImageUrl = $("img").first().attr("src");
+            const des = val?.excerpt.rendered.replace("[&hellip;]", "");
+            console.log('des', des)
             return (
-              <div key={val.id} className="border-b">
+              <div key={val.id} className="border-b dark:border-gray-800">
                 <div className="py-8 flex flex-wrap md:flex-nowrap">
                   <div className="md:w-64 md:mb-0 mb-6 flex-shrink-0 flex flex-col">
-                    <span className="font-semibold title-font text-gray-700">
+                    <span className="font-semibold title-font text-gray-700 dark:text-gray-300">
                       CATEGORY
                     </span>
-                    <span className="mt-1 text-gray-500 text-sm">
+                    <span className="mt-1 text-gray-500  text-sm">
                       {val.date}
                     </span>
                   </div>
-                  <div className="md:flex-grow" >
-                    <h2 className="text-2xl font-medium text-gray-900 title-font mb-2"  dangerouslySetInnerHTML={{ __html: val.title }} >
-                      
-                    </h2>
+                  <div className="md:flex-grow">
+                    <h2
+                      className="text-2xl font-medium text-gray-900 dark:text-gray-200 title-font mb-2"
+                      dangerouslySetInnerHTML={{ __html: val.title }}
+                    ></h2>
                     <div
-                      className="leading-relaxed"
-                      dangerouslySetInnerHTML={{ __html: val.excerpt.rendered }}
+                      className="leading-relaxed dark:text-gray-500"
+                      dangerouslySetInnerHTML={{ __html: des }}
                     ></div>
-                    <a href={val.slug} className="text-indigo-500 inline-flex items-center mt-4">
+                    <a
+                      href={val.slug}
+                      className="text-indigo-500 inline-flex items-center mt-4"
+                    >
                       Learn More
                       <svg
                         className="w-4 h-4 ml-2"
@@ -59,7 +64,6 @@ const Home: NextPage<Props> = ({ post }) => {
                       </svg>
                     </a>
                   </div>
-             
                 </div>
               </div>
             );

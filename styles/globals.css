@@ -6,9 +6,9 @@ html,
 body {
   padding: 0;
   margin: 0;
-  background: white;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+    @apply bg-neutral-100 dark:bg-neutral-900 text-black dark:text-white transition-colors duration-300;
 }
 
 a {
@@ -60,5 +60,22 @@ a {
 }
 .post li{
   @apply py-2;
+}
+
+#theme-toggle {
+  @apply invisible;
+}
+
+#theme-toggle + label {
+  @apply inline-block cursor-pointer h-12 w-12 rounded-full duration-300 content-[''];
+}
+
+#theme-toggle:not(:checked) + label {
+  @apply bg-amber-400;
+}
+
+#theme-toggle:checked + label {
+  @apply bg-transparent;
+  box-shadow: inset -18px -16px 1px 1px #ddd;
 }
 
