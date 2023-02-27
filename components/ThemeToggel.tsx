@@ -32,7 +32,7 @@ const ThemeToggel: NextPage<Props> = ({}) => {
   };
   return (<>
     <input type="checkbox" id="theme-toggle" checked={theme === "dark"} onClick={()=>toggleTheme()} />
-      <label for="theme-toggle" />
+      <label htmlFor="theme-toggle" />
   </>
 
 

@@ -15,7 +15,7 @@ const Post: NextPage<Props> = ({ post }) => {
 
   useEffect(() => {
     const parser = new DOMParser();
-    const doc = parser.parseFromString(htmlString, "text/html");
+    const doc = parser.parseFromString(String(htmlString), "text/html");
     const elements = doc.querySelectorAll("[style],img");
 
     elements.forEach(element => {

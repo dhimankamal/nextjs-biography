@@ -11,7 +11,7 @@ const About: NextPage<Props> = ({}) => {
       <div className="lg:w-5/6 mx-auto space-y-4 text-xl opacity-70 py-10">
         <p>
           Welcome to block, a website dedicated to providing you with insightful
-          and entertaining biographies of some of the world's most talented
+          and entertaining biographies of some of the worlds most talented
           artists. Our team of writers and researchers are passionate about art
           and the people who create it, and we strive to bring you the most
           up-to-date and comprehensive information on the artists that inspire
@@ -19,9 +19,9 @@ const About: NextPage<Props> = ({}) => {
         </p>
         <p>
           At blocks, we believe that every artist has a unique story to tell. We
-          aim to capture the essence of each artist's life and work through
+          aim to capture the essence of each artists life and work through
           carefully crafted biographies that are informative, engaging, and
-          enjoyable to read. Whether you're a fan of classical art, contemporary
+          enjoyable to read. Whether youre a fan of classical art, contemporary
           art, or something in between, our blog has something for everyone.
         </p>
         <p>
@@ -47,7 +47,7 @@ const About: NextPage<Props> = ({}) => {
         <p>
           Thank you for visiting blocks, and we hope that you enjoy exploring
           the world of art with us.
-        </p>{" "}
+        </p>
       </div>
     </div>
   );

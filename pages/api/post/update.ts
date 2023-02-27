@@ -64,7 +64,7 @@ const updatePostData = async () => {
       const $links = $("a:has(img)");
 
       // iterate over image elements and replace URLs
-      async function replaceImageUrls() {
+      const replaceImageUrls = async () => {
         for (let i = 0; i < $images.length; i++) {
           const $img = $images.eq(i);
           const imageUrl = $img.attr('src');
@@ -87,7 +87,7 @@ const updatePostData = async () => {
         }
       }
       // iterate over link elements and replace URLs
-      async function replaceLinkUrls() {
+      const replaceLinkUrls = async () => {
         for (let i = 0; i < $links.length; i++) {
           const $link = $links.eq(i);
           const imageUrl = $link.find("img").attr("src");

@@ -5,7 +5,7 @@ import { Post } from "@prisma/client";
 const cheerio = require("cheerio");
 
 interface Props {
-  post: Post[];
+  post: (Post & { excerpt: { rendered: string } }) [];
 }
 
 const Home: NextPage<Props> = ({ post }) => {
@@ -23,8 +23,9 @@ const Home: NextPage<Props> = ({ post }) => {
           {post.map(val => {
             const $ = cheerio.load(val.content);
             const firstImageUrl = $("img").first().attr("src");
-            const des = val?.excerpt.rendered.replace("[&hellip;]", "");
-            console.log('des', des)
+            const des =  val.excerpt.rendered.replace("[&hellip;]", "");
+              
+            console.log("des", des);
             return (
               <div key={val.id} className="border-b dark:border-gray-800">
                 <div className="py-8 flex flex-wrap md:flex-nowrap">
