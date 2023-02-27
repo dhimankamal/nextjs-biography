@@ -2,12 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+
+  @import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300;400;500;600;700&display=swap');
+
+
 html,
 body {
   padding: 0;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
-    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  font-family: 'Fira Code', monospace;
     @apply bg-neutral-100 dark:bg-neutral-900 text-black dark:text-white transition-colors duration-300;
 }
 
@@ -23,7 +26,7 @@ a {
   text-align: center;
 }
 .post p {
-  padding: 20px 0;
+ @apply py-4;
 }
 .post img {
   @apply my-2 mx-auto rounded-3xl;
@@ -45,7 +48,7 @@ a {
 }
 
 .post table td {
-  @apply border text-xl p-4 text-left;
+  @apply border text-sm sm:text-xl p-4 text-left;
 }
 
 .post table img {

@@ -1,4 +1,5 @@
 import { NextPage } from "next";
+import Link from "next/link";
 import ThemeToggel from "./ThemeToggel";
 
 interface Props {}
@@ -11,7 +12,7 @@ const Navbar: NextPage<Props> = ({}) => {
     },
     {
       name: "About",
-      href: "/",
+      href: "/about",
     },
     {
       name: "Contact us",
@@ -25,13 +26,13 @@ const Navbar: NextPage<Props> = ({}) => {
           <nav className="flex lg:w-2/5 flex-wrap items-center text-base md:ml-auto">
             {navLinks.map(val => {
               return (
-                <a
+                <Link
                   key={val.name}
                   href={val.href}
                   className="mr-5 cursor-pointer hover:text-gray-900 dark:hover:text-white"
                 >
                   {val.name}
-                </a>
+                </Link>
               );
             })}
           </nav>

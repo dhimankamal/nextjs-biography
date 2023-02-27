@@ -2,6 +2,7 @@ import { NextPage, GetStaticPaths, GetStaticProps } from "next";
 import { prisma } from "@/lib/db";
 import { Post } from "@prisma/client";
 import { useEffect, useState } from "react";
+import Breadcrumb from "@/components/Breadcrumb";
 
 interface Props {
   post: Post;
@@ -31,12 +32,23 @@ const Post: NextPage<Props> = ({ post }) => {
   }, [htmlString]);
   return (
     <>
-      <div className="container mx-auto grid grid-cols-3 gap-8">
-        <div className="post col-span-2 rounded-lg p-10 shadow-xl bg-white dark:bg-neutral-800">
-          <h1 className="text-3xl font-bold" dangerouslySetInnerHTML={{ __html: post.title }}></h1>
+      <div className="container mx-auto grid grid-cols-3 gap-8 px-2">
+        <div className="col-span-3">
+          <Breadcrumb
+            crumbs={[
+              { name: "Home", href: "/" },
+              { name: post.title, href: "/" },
+            ]}
+          />
+        </div>
+
+        <div className="post col-span-3 lg:col-span-2 rounded-lg p-2 md:p-4 lg:p-10 shadow-xl bg-white dark:bg-neutral-800">
           <div dangerouslySetInnerHTML={{ __html: cleanHtmlString }}></div>
         </div>
-        <div className="col-span-1 rounded-lg shadow-xl bg-white dark:bg-neutral-800"> side</div>
+        <div className="col-span-1 rounded-lg shadow-xl bg-white dark:bg-neutral-800">
+          {" "}
+          side
+        </div>
       </div>
     </>
   );
