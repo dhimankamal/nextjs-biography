@@ -19,7 +19,7 @@ const Home: NextPage<Props> = ({ post }) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <section className="text-gray-600 body-font overflow-hidden">
-        <div className="container px-5 py-24 mx-auto">
+        <div className="container px-5 py-10 lg:py-12 mx-auto">
           {post.map(val => {
             const $ = cheerio.load(val.content);
             const firstImageUrl = $("img").first().attr("src");
@@ -79,6 +79,7 @@ export const getStaticProps: GetStaticProps = async () => {
   let post: Post[] = [];
   try {
     post = await prisma.post.findMany({
+      take:8,
       orderBy: {
         date: "desc",
       },

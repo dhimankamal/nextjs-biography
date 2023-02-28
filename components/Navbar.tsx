@@ -21,22 +21,22 @@ const Navbar: NextPage<Props> = ({}) => {
   ];
   return (
     <>
-      <header className="text-gray-600  dark:text-gray-300 body-font">
-        <div className="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
-          <nav className="flex lg:w-2/5 flex-wrap items-center text-base md:ml-auto">
+      <header className="text-gray-600 z-50  dark:text-gray-300 body-font sticky top-0 bg-neutral-100 dark:bg-neutral-900 ">
+        <div className="container mx-auto flex p-5 flex-col md:flex-row items-center gap-2">
+          <nav className="flex items-center justify-center lg:justify-start text-base w-full">
             {navLinks.map(val => {
               return (
                 <Link
                   key={val.name}
                   href={val.href}
-                  className="mr-5 cursor-pointer hover:text-gray-900 dark:hover:text-white"
+                  className="mr-5 last:mr-0 cursor-pointer hover:text-gray-900 dark:hover:text-white"
                 >
                   {val.name}
                 </Link>
               );
             })}
           </nav>
-          <a className="flex order-first lg:order-none lg:w-1/5 title-font font-medium items-center text-gray-900 lg:items-center lg:justify-center mb-4 md:mb-0">
+          <a className="flex order-first w-full justify-center lg:order-none lg:w-1/5 title-font font-medium items-center text-gray-900 lg:items-center lg:justify-center mb-4 md:mb-0">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -51,7 +51,7 @@ const Navbar: NextPage<Props> = ({}) => {
             </svg>
             <span className="ml-3 text-xl dark:text-white">Tailblocks</span>
           </a>
-          <div className="lg:w-2/5 inline-flex lg:justify-end ml-5 lg:ml-0">
+          <div className="w-full lg:justify-end lg:ml-0 flex items-center justify-center">
             <ThemeToggel />
           </div>
         </div>
