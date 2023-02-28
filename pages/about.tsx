@@ -5,7 +5,7 @@ interface Props {}
 
 const About: NextPage<Props> = ({}) => {
   return (
-    <div className="container mx-auto text-center space-y-4">
+    <div className="container mx-auto text-center space-y-4 px-2">
      <Breadcrumb crumbs={[{name:"Home",href:"/"},{name:'About Us',href:'/about'}]} />
 
       <div className="lg:w-5/6 mx-auto space-y-4 text-xl opacity-70 py-10">
