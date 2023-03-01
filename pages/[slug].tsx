@@ -42,7 +42,7 @@ const Post: NextPage<Props> = ({ post }) => {
           />
         </div>
 
-        <div className="post col-span-3 lg:col-span-2 rounded-lg p-2 md:p-4 lg:p-10 shadow-xl bg-white dark:bg-neutral-800">
+        <div className="post col-span-3 lg:col-span-2 rounded-lg p-2 md:p-4 lg:p-10 shadow-xl bg-white dark:bg-neutral-800 overflow-hidden">
           <div dangerouslySetInnerHTML={{ __html: cleanHtmlString }}></div>
         </div>
         <div className="col-span-1 rounded-lg shadow-xl bg-white dark:bg-neutral-800">

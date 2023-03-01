@@ -2,6 +2,7 @@ import { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
 import { prisma } from "@/lib/db";
 import { Post } from "@prisma/client";
+import dayjs from "dayjs"
 const cheerio = require("cheerio");
 
 interface Props {
@@ -24,8 +25,6 @@ const Home: NextPage<Props> = ({ post }) => {
             const $ = cheerio.load(val.content);
             const firstImageUrl = $("img").first().attr("src");
             const des =  val.excerpt.rendered.replace("[&hellip;]", "");
-              
-            console.log("des", des);
             return (
               <div key={val.id} className="border-b dark:border-gray-800">
                 <div className="py-8 flex flex-wrap md:flex-nowrap">
@@ -34,7 +33,7 @@ const Home: NextPage<Props> = ({ post }) => {
                       CATEGORY
                     </span>
                     <span className="mt-1 text-gray-500  text-sm">
-                      {val.date}
+                      {dayjs(val.date).format("hh:mmA D-MMM-YY") }
                     </span>
                   </div>
                   <div className="md:flex-grow">

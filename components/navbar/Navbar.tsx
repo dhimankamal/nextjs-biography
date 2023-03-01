@@ -3,12 +3,26 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 import MobileMenu from "./MobileMenu";
 import ThemeToggel from "./ThemeToggel";
+import { useRouter } from "next/router";
 
 interface Props {}
 
 const Navbar: NextPage<Props> = ({}) => {
   const [isActive, setIsActive] = useState(false);
   const [theme, setTheme] = useState("light");
+  const router = useRouter();
+
+  useEffect(() => {
+    const handleRouteChange = () => {
+      setIsActive(false);
+    };
+
+    router.events.on('routeChangeStart', handleRouteChange);
+
+    return () => {
+      router.events.off('routeChangeStart', handleRouteChange);
+    };
+  }, [router.events]);
 
   useEffect(() => {
     const mediaQuery = window.matchMedia("(prefers-color-scheme: dark)");
