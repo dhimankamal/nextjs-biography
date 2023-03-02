@@ -128,7 +128,6 @@ const updatePostData = async () => {
     }
     return `done ${updateData.length}`;
   } catch (error) {
-    console.log("error test");
     return error;
   }
 };
@@ -138,6 +137,5 @@ export default async function handler(
   res: NextApiResponse<Data>
 ) {
   let response = await updatePostData();
-  console.log("baseUrl", response);
   res.status(200).json({ name: "John Doe" });
 }

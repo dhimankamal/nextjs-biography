@@ -1,16 +1,17 @@
 import { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
 import { prisma } from "@/lib/db";
-import { Post } from "@prisma/client";
-import dayjs from "dayjs"
+import {  Post } from "@prisma/client";
+import dayjs from "dayjs";
+import { categoryList } from "@/utils/category";
 const cheerio = require("cheerio");
 
 interface Props {
-  post: (Post & { excerpt: { rendered: string } }) [];
+  post: (Post & { excerpt: { rendered: string },categories:number[] })[];
 }
 
 const Home: NextPage<Props> = ({ post }) => {
-  console.log("post", post);
+   
   return (
     <>
       <Head>
@@ -24,16 +25,17 @@ const Home: NextPage<Props> = ({ post }) => {
           {post.map(val => {
             const $ = cheerio.load(val.content);
             const firstImageUrl = $("img").first().attr("src");
-            const des =  val.excerpt.rendered.replace("[&hellip;]", "");
+            const categoryName = categoryList.find((value) => val.categories[0] === value.categorieid)
+            const des = val.excerpt.rendered.replace("[&hellip;]", "");
             return (
               <div key={val.id} className="border-b dark:border-gray-800">
                 <div className="py-8 flex flex-wrap md:flex-nowrap">
                   <div className="md:w-64 md:mb-0 mb-6 flex-shrink-0 flex flex-col">
                     <span className="font-semibold title-font text-gray-700 dark:text-gray-300">
-                      CATEGORY
+                      {categoryName?.name || "CATEGORY"}
                     </span>
                     <span className="mt-1 text-gray-500  text-sm">
-                      {dayjs(val.date).format("hh:mmA D-MMM-YY") }
+                      {dayjs(val.date).format("hh:mmA D-MMM-YY")}
                     </span>
                   </div>
                   <div className="md:flex-grow">
@@ -78,7 +80,7 @@ export const getStaticProps: GetStaticProps = async () => {
   let post: Post[] = [];
   try {
     post = await prisma.post.findMany({
-      take:8,
+      take: 8,
       orderBy: {
         date: "desc",
       },
