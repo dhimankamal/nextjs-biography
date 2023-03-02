@@ -49,7 +49,7 @@ const Home: NextPage<Props> = ({ post }) => {
                       dangerouslySetInnerHTML={{ __html: des }}
                     ></div>
                          <a
-                      href={val.slug}
+                         href={val.slug}
                       className="text-indigo-500 inline-flex items-center mt-4"
                     >
                       Learn More
