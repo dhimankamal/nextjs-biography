@@ -42,7 +42,8 @@
       "yarn format:fix",
       "git add"
     ]
-  },"husky": {
+  },
+  "husky": {
     "hooks": {
       "pre-commit": "lint-staged"
     }
