@@ -17,10 +17,10 @@ const Navbar: NextPage<Props> = ({}) => {
       setIsActive(false);
     };
 
-    router.events.on('routeChangeStart', handleRouteChange);
+    router.events.on("routeChangeStart", handleRouteChange);
 
     return () => {
-      router.events.off('routeChangeStart', handleRouteChange);
+      router.events.off("routeChangeStart", handleRouteChange);
     };
   }, [router.events]);
 
@@ -68,7 +68,7 @@ const Navbar: NextPage<Props> = ({}) => {
       <header className="text-gray-600 z-50  dark:text-gray-300 body-font sticky top-0 bg-neutral-100 dark:bg-neutral-900 ">
         <div className="container mx-auto flex p-5 flex-row items-center gap-2 z-10">
           <nav className="hidden lg:flex items-center justify-center lg:justify-start text-base w-full">
-            {navLinks.map(val => {
+            {navLinks.map((val) => {
               return (
                 <Link
                   key={val.name}
@@ -105,7 +105,7 @@ const Navbar: NextPage<Props> = ({}) => {
       </header>
       {isActive && (
         <div className="fixed z-10 bg-neutral-100 top-0 h-screen dark:bg-neutral-900 w-full flex flex-col items-center justify-center gap-10">
-          {navLinks.map(val => {
+          {navLinks.map((val) => {
             return (
               <Link
                 key={val.name}

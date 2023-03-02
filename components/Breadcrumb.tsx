@@ -14,7 +14,7 @@ const Breadcrumb: NextPage<Props> = ({ crumbs }) => {
           dangerouslySetInnerHTML={{ __html: crumbs.at(-1)?.name || "" }}
         ></h1>
         <div className="flex text-sm md:text-base flex-col gap-2 lg:flex-row justify-center items-center text-center">
-          {crumbs.map(val => {
+          {crumbs.map((val) => {
             return (
               <Link
                 key={val.href}

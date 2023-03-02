@@ -1,17 +1,16 @@
 import { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
 import { prisma } from "@/lib/db";
-import {  Post } from "@prisma/client";
+import { Post } from "@prisma/client";
 import dayjs from "dayjs";
 import { categoryList } from "@/utils/category";
 const cheerio = require("cheerio");
 
 interface Props {
-  post: (Post & { excerpt: { rendered: string },categories:number[] })[];
+  post: (Post & { excerpt: { rendered: string }; categories: number[] })[];
 }
 
 const Home: NextPage<Props> = ({ post }) => {
-   
   return (
     <>
       <Head>
@@ -22,10 +21,12 @@ const Home: NextPage<Props> = ({ post }) => {
       </Head>
       <section className="text-gray-600 body-font overflow-hidden">
         <div className="container px-5 py-10 lg:py-12 mx-auto">
-          {post.map(val => {
+          {post.map((val) => {
             const $ = cheerio.load(val.content);
             const firstImageUrl = $("img").first().attr("src");
-            const categoryName = categoryList.find((value) => val.categories[0] === value.categorieid)
+            const categoryName = categoryList.find(
+              (value) => val.categories[0] === value.categorieid
+            );
             const des = val.excerpt.rendered.replace("[&hellip;]", "");
             return (
               <div key={val.id} className="border-b dark:border-gray-800">

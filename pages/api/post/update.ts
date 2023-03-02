@@ -67,25 +67,25 @@ const updatePostData = async () => {
       const replaceImageUrls = async () => {
         for (let i = 0; i < $images.length; i++) {
           const $img = $images.eq(i);
-          const imageUrl = $img.attr('src');
-          const filename = imageUrl.split('/').pop(); // get filename from URL
+          const imageUrl = $img.attr("src");
+          const filename = imageUrl.split("/").pop(); // get filename from URL
           try {
             const result = await cloudinary.uploader.upload(imageUrl, {
-              public_id: filename.replace(/\.[^/.]+$/, ''), // remove extension from filename
-              overwrite: true // overwrite image if it already exists
+              public_id: filename.replace(/\.[^/.]+$/, ""), // remove extension from filename
+              overwrite: true, // overwrite image if it already exists
             });
             const cloudinaryUrl = result.secure_url;
             // replace src attribute
-            $img.attr('src', cloudinaryUrl);
+            $img.attr("src", cloudinaryUrl);
             // remove srcset attribute
-            $img.removeAttr('srcset');
+            $img.removeAttr("srcset");
             // remove img tag if desired
             // $img.remove();
           } catch (error) {
             console.error(error);
           }
         }
-      }
+      };
       // iterate over link elements and replace URLs
       const replaceLinkUrls = async () => {
         for (let i = 0; i < $links.length; i++) {
@@ -103,7 +103,7 @@ const updatePostData = async () => {
             console.error(error);
           }
         }
-      }
+      };
 
       await replaceImageUrls();
       await replaceLinkUrls();

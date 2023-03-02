@@ -23,11 +23,11 @@ const getCategory = async () => {
 
 const updateCategoryData = async () => {
   try {
-    let updateData:any[] = [];
+    let updateData: any[] = [];
     const data = await getCategory();
     if (data.length) {
       updateData = [...updateData, ...data];
-    } 
+    }
     updateData.forEach(async ({ id, name, slug }) => {
       let obj = {
         categorieid: +id,
