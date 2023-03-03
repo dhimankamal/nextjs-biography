@@ -4,6 +4,7 @@ import { prisma } from "@/lib/db";
 import { Post } from "@prisma/client";
 import dayjs from "dayjs";
 import { categoryList } from "@/utils/category";
+import Image from "next/image";
 const cheerio = require("cheerio");
 
 interface Props {
@@ -30,7 +31,7 @@ const Home: NextPage<Props> = ({ post }) => {
             const des = val.excerpt.rendered.replace("[&hellip;]", "");
             return (
               <div key={val.id} className="border-b dark:border-gray-800">
-                <div className="py-8 flex flex-wrap md:flex-nowrap">
+                <div className="py-8 flex flex-wrap md:flex-nowrap ">
                   <div className="md:w-64 md:mb-0 mb-6 flex-shrink-0 flex flex-col">
                     <span className="font-semibold title-font text-gray-700 dark:text-gray-300">
                       {categoryName?.name || "CATEGORY"}
@@ -38,6 +39,9 @@ const Home: NextPage<Props> = ({ post }) => {
                     <span className="mt-1 text-gray-500  text-sm">
                       {dayjs(val.date).format("hh:mmA D-MMM-YY")}
                     </span>
+                  </div>
+                  <div className="lg:mr-8 w-full">
+                    <Image src={val.imageUrl || "https://dummyimage.com/200x300" } className="rounded-2xl" width="200" height="300" alt="feature-image" />
                   </div>
                   <div className="md:flex-grow">
                     <h2
