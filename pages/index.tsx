@@ -2,16 +2,29 @@ import { GetStaticProps, NextPage } from "next";
 import Head from "next/head";
 import { prisma } from "@/lib/db";
 import { Post } from "@prisma/client";
-import dayjs from "dayjs";
-import { categoryList } from "@/utils/category";
-import Image from "next/image";
-const cheerio = require("cheerio");
+import PostList from "@/components/post/PostList";
+import { useState } from "react";
+import InfiniteScroll from "react-infinite-scroll-component";
+import axios from "axios";
 
 interface Props {
-  post: (Post & { excerpt: { rendered: string }; categories: number[] })[];
+  post: Post[];
 }
 
 const Home: NextPage<Props> = ({ post }) => {
+  const [page, setPage] = useState(1);
+  const [items, setItems] = useState(post);
+
+  const handleLoadMore = async () => {
+    setPage(page + 1);
+    const res = await axios({
+      method: "GET",
+      url: `/api/post/getpost?page=${page}`,
+    });
+    setItems([...items, ...res.data]);
+    console.log("loadmore", res);
+  };
+
   return (
     <>
       <Head>
@@ -22,59 +35,20 @@ const Home: NextPage<Props> = ({ post }) => {
       </Head>
       <section className="text-gray-600 body-font overflow-hidden">
         <div className="container px-5 py-10 lg:py-12 mx-auto">
-          {post.map((val) => {
-            const $ = cheerio.load(val.content);
-            const firstImageUrl = $("img").first().attr("src");
-            const categoryName = categoryList.find(
-              (value) => val.categories[0] === value.categorieid
-            );
-            const des = val.excerpt.rendered.replace("[&hellip;]", "");
-            return (
-              <div key={val.id} className="border-b dark:border-gray-800">
-                <div className="py-8 flex flex-wrap md:flex-nowrap ">
-                  <div className="md:w-64 md:mb-0 mb-6 flex-shrink-0 flex flex-col">
-                    <span className="font-semibold title-font text-gray-700 dark:text-gray-300">
-                      {categoryName?.name || "CATEGORY"}
-                    </span>
-                    <span className="mt-1 text-gray-500  text-sm">
-                      {dayjs(val.date).format("hh:mmA D-MMM-YY")}
-                    </span>
-                  </div>
-                  <div className="lg:mr-8 w-full">
-                    <Image src={val.imageUrl || "https://dummyimage.com/200x300" } className="rounded-2xl" width="200" height="300" alt="feature-image" />
-                  </div>
-                  <div className="md:flex-grow">
-                    <h2
-                      className="text-2xl font-medium text-gray-900 dark:text-gray-200 title-font mb-2"
-                      dangerouslySetInnerHTML={{ __html: val.title }}
-                    ></h2>
-                    <div
-                      className="leading-relaxed dark:text-gray-500"
-                      dangerouslySetInnerHTML={{ __html: des }}
-                    ></div>
-                         <a
-                         href={val.slug}
-                      className="text-indigo-500 inline-flex items-center mt-4"
-                    >
-                      Learn More
-                      <svg
-                        className="w-4 h-4 ml-2"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor"
-                        strokeWidth={2}
-                        fill="none"
-                        strokeLinecap="round"
-                        strokeLinejoin="round"
-                      >
-                        <path d="M5 12h14" />
-                        <path d="M12 5l7 7-7 7" />
-                      </svg>
-                    </a>
-                  </div>
+          <InfiniteScroll
+            dataLength={items.length}
+            next={handleLoadMore}
+            hasMore={true}
+            loader={<h4>Loading...</h4>}
+          >
+            {items.map((data: any) => {
+              return (
+                <div key={data.id} className="border-b dark:border-gray-800">
+                  <PostList data={data} />
                 </div>
-              </div>
-            );
-          })}
+              );
+            })}
+          </InfiniteScroll>
         </div>
       </section>
     </>

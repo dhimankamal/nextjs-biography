@@ -40,7 +40,6 @@ const getUrl = async (id: number) => {
       method: "GET",
       url: `${baseUrl}/wp/v2/media/${id}`,
     });
-   
 
     if (res.data && res.data.source_url) {
       return res.data.source_url;
@@ -57,13 +56,13 @@ const upadteFeatureImage = async () => {
     // orderBy: {
     //   date: "desc",
     // },
-    where:{
-      imageUrl: null
+    where: {
+      imageUrl: null,
     },
   });
 
   await Promise.all(
-    postList.map(async element => {
+    postList.map(async (element) => {
       if (element.featured_media) {
         let uploadImageUrl = "";
         let Url = await getUrl(element.featured_media);
