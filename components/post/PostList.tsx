@@ -18,7 +18,7 @@ const PostList: NextPage<Props> = ({ data }) => {
       <div className="py-8 md:grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-5">
         <div className="md:w-64 md:mb-0 mb-6 flex-shrink-0 flex flex-col">
           <span className="font-semibold title-font text-gray-700 dark:text-gray-300">
-            {categoryName?.name || "CATEGORY"}
+            {categoryName?.name || "Biography"}
           </span>
           <span className="mt-1 text-gray-500  text-sm">
             {dayjs(data.date).format("hh:mmA D-MMM-YY")}

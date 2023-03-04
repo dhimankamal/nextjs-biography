@@ -29,13 +29,13 @@ const Navbar: NextPage<Props> = ({}) => {
     if (mediaQuery.matches) {
       setTheme("dark");
     }
-    const listener = () => {
-      setTheme(mediaQuery.matches ? "dark" : "light");
-    };
-    mediaQuery.addListener(listener);
-    return () => {
-      mediaQuery.removeListener(listener);
-    };
+    // const listener = () => {
+     // setTheme(mediaQuery.matches ? "dark" : "light");
+    // };
+    // mediaQuery.addListener(listener);
+    // return () => {
+    //   mediaQuery.removeListener(listener);
+    // };
   }, []);
 
   useEffect(() => {
