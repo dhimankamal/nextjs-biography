@@ -66,7 +66,7 @@ const Navbar: NextPage<Props> = ({}) => {
   return (
     <>
       <header className="text-gray-600 z-50  dark:text-gray-300 body-font sticky top-0 bg-neutral-100 dark:bg-neutral-900 ">
-        <div className="container mx-auto flex p-5 flex-row items-center gap-2 z-10">
+        <div className="container mx-auto flex px-5 lg:py-5 flex-row items-center gap-2 z-10">
           <nav className="hidden lg:flex items-center justify-center lg:justify-start text-base w-full">
             {navLinks.map((val) => {
               return (

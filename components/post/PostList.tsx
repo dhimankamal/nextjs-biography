@@ -15,7 +15,7 @@ const PostList: NextPage<Props> = ({ data }) => {
   const des = data.excerpt.rendered.replace("[&hellip;]", "");
   return (
     <>
-      <div className="py-8 flex flex-wrap md:flex-nowrap ">
+      <div className="py-8 md:grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-5">
         <div className="md:w-64 md:mb-0 mb-6 flex-shrink-0 flex flex-col">
           <span className="font-semibold title-font text-gray-700 dark:text-gray-300">
             {categoryName?.name || "CATEGORY"}
@@ -24,16 +24,16 @@ const PostList: NextPage<Props> = ({ data }) => {
             {dayjs(data.date).format("hh:mmA D-MMM-YY")}
           </span>
         </div>
-        <div className="lg:mr-8 w-fit">
+        <div className="pb-4 md:py-0 md:px-4">
           <Image
             src={data.imageUrl || "https://dummyimage.com/200x300"}
-            className="rounded-2xl max-w-fit"
+            className="rounded-2xl w-full"
             width="200"
             height="300"
             alt="feature-image"
           />
         </div>
-        <div className="md:flex-grow">
+        <div className="col-span-2 lg:col-span-3">
           <h2
             className="text-2xl font-medium text-gray-900 dark:text-gray-200 title-font mb-2"
             dangerouslySetInnerHTML={{ __html: data.title }}
