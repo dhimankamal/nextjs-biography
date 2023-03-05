@@ -15,43 +15,40 @@ const About: NextPage<Props> = ({}) => {
 
       <div className="lg:w-5/6 mx-auto space-y-4 text-xl opacity-70 py-10">
         <p>
-          Welcome to block, a website dedicated to providing you with insightful
-          and entertaining biographies of some of the worlds most talented
-          artists. Our team of writers and researchers are passionate about art
-          and the people who create it, and we strive to bring you the most
-          up-to-date and comprehensive information on the artists that inspire
-          us.
+          Welcome to GossipGeeks, your ultimate source for the latest news and
+          information about your favorite celebrities!
         </p>
         <p>
-          At blocks, we believe that every artist has a unique story to tell. We
-          aim to capture the essence of each artists life and work through
-          carefully crafted biographies that are informative, engaging, and
-          enjoyable to read. Whether youre a fan of classical art, contemporary
-          art, or something in between, our blog has something for everyone.
+          At GossipGeeks, we are passionate about all things celebrity-related.
+          We strive to provide our readers with the most up-to-date and accurate
+          information on their favorite stars, including their latest projects,
+          personal lives, and everything in between.
         </p>
         <p>
-          Our biographies cover a range of artists from different eras, genres,
-          and styles. From the Renaissance masters to modern-day icons, we
-          explore the lives and works of artists from all around the world. We
-          also provide insights into their artistic process, inspirations, and
-          the cultural and historical contexts in which they worked.
+          Our team of expert writers and editors are dedicated to bringing you
+          the latest breaking news and exclusive stories from the world of
+          entertainment. We take pride in our commitment to journalistic
+          integrity, ensuring that all of our articles are thoroughly researched
+          and fact-checked before they are published.
         </p>
         <p>
-          Our team of writers and researchers are experts in their fields, with
-          a deep understanding of the art world and its rich history. We take
-          pride in our commitment to accuracy, and we ensure that all our
-          biographies are rigorously researched and fact-checked.
+          Whether youre a die-hard fan of a particular celebrity, or simply love
+          keeping up with the latest gossip and trends in the entertainment
+          industry, GossipGeeks has everything you need. From in-depth
+          interviews and behind-the-scenes features to red carpet coverage and
+          juicy rumors, we have got you covered.
         </p>
         <p>
-          We hope that our blog will inspire you to learn more about the artists
-          that you admire and introduce you to new artists and art forms that
-          you may not have encountered before. We welcome your feedback and
-          suggestions, and we invite you to join us on this journey of artistic
-          discovery.
+          So why choose GossipGeeks? With our unparalleled coverage and expert
+          analysis, we are the go-to destination for all your celebrity news and
+          information needs. We are passionate about what we do, and we are
+          committed to providing our readers with the best possible content and
+          user experience.
         </p>
         <p>
-          Thank you for visiting blocks, and we hope that you enjoy exploring
-          the world of art with us.
+          Thank you for choosing GossipGeeks as your source for all things
+          celebrity. We look forward to bringing you the latest and greatest in
+          entertainment news!
         </p>
       </div>
     </div>
