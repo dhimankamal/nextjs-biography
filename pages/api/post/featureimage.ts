@@ -27,7 +27,7 @@ const uploadImage = async (imagePath: string) => {
   try {
     // Upload the image
     const result = await cloudinary.uploader.upload(imagePath, options);
-    console.log("test++", result);
+    
     return result.secure_url;
   } catch (error) {
     console.error(error);
@@ -52,7 +52,7 @@ const getUrl = async (id: number) => {
 
 const upadteFeatureImage = async () => {
   let postList = await prisma.post.findMany({
-    // take: 1,
+     take: 100,
     // orderBy: {
     //   date: "desc",
     // },
@@ -60,7 +60,7 @@ const upadteFeatureImage = async () => {
       imageUrl: null,
     },
   });
-
+console.log("length", postList.length)
   await Promise.all(
     postList.map(async (element) => {
       if (element.featured_media) {

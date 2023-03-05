@@ -22,6 +22,7 @@ model Post {
   tags Json
   featured_media Int?
   imageUrl String?
+  imagesUpdated Boolean @default(false)
 }
 model Categories {
    id String @id @default(cuid())
