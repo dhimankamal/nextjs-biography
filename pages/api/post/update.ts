@@ -19,7 +19,7 @@ const getPostData = async (page: number) => {
   try {
     const res = await axios({
       method: "GET",
-      url: `${baseUrl}/wp/v2/posts?per_page=100&page=${page}`,
+      url: `${baseUrl}/wp/v2/posts?per_page=10&page=${page}`,
     });
 
     if (res && res.data) {
@@ -43,7 +43,7 @@ const updatePostData = async () => {
     }
 
     for (const post of updateData) {
-      const {
+      let {
         id,
         date,
         slug,
@@ -54,6 +54,8 @@ const updatePostData = async () => {
         tags,
         featured_media,
       } = post;
+
+      excerpt = excerpt.rendered
 
       const $ = cheerio.load(content.rendered);
       // load HTML string into cheerio

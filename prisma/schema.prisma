@@ -13,10 +13,10 @@ model Post {
   date           String
   slug           String  @unique
   title          String
-  content        String  @db.LongText
-  excerpt        String  @db.LongText
-  categories     String  @db.LongText
-  tags           String  @db.LongText
+  content        Json
+  excerpt        Json
+  categories     Json
+  tags           Json
   featured_media Int?
   imageUrl       String?
   imagesUpdated  Boolean @default(false)

@@ -5,14 +5,14 @@ import dayjs from "dayjs";
 import Image from "next/image";
 
 interface Props {
-  data: Post & { excerpt: { rendered: string }; categories: number[] };
+  data: Post & { categories: number[] };
 }
 
 const PostList: NextPage<Props> = ({ data }) => {
   const categoryName = categoryList.find(
     (value) => data.categories[0] === value.categorieid
   );
-  const des = data.excerpt.rendered.replace("[&hellip;]", "");
+  const des = String(data.excerpt).replace("[&hellip;]", "");
   return (
     <>
       <div className="py-8 md:grid gap-4 grid-cols-1 md:grid-cols-2 lg:grid-cols-5">
