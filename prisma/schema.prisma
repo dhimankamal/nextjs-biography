@@ -1,6 +1,3 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
-
 generator client {
   provider = "prisma-client-js"
 }
@@ -11,29 +8,30 @@ datasource db {
 }
 
 model Post {
-  id      String @id @default(cuid())
-  postid  String @unique
-  date    String
-  slug    String @unique
-  title   String
-  content Json
-  excerpt Json
-  categories Json 
-  tags Json
+  id             String  @id @default(cuid())
+  postid         String  @unique
+  date           String
+  slug           String  @unique
+  title          String
+  content        String  @db.LongText
+  excerpt        String  @db.LongText
+  categories     String  @db.LongText
+  tags           String  @db.LongText
   featured_media Int?
-  imageUrl String?
+  imageUrl       String?
+  imagesUpdated  Boolean @default(false)
 }
+
 model Categories {
-   id String @id @default(cuid())
-   categorieid Int @unique
-   name String
-   slug String
+  id          String @id @default(cuid())
+  categorieid Int    @unique
+  name        String
+  slug        String
 }
 
 model Tags {
-   id String @id @default(cuid())
-   tagid Int @unique
-   name String
-   slug String
+  id    String @id @default(cuid())
+  tagid Int    @unique
+  name  String
+  slug  String
 }
-
