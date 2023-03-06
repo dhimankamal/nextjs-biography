@@ -52,7 +52,9 @@ a {
 .post table img {
   @apply my-10 rounded-3xl;
 }
-
+.post a {
+  @apply text-blue-800 cursor-pointer;
+}
 .accessibility {
   @apply text-xl font-bold py-4;
 }

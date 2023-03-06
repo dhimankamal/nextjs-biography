@@ -3,6 +3,7 @@ import type { AppProps } from "next/app";
 import Navbar from "@/components/navbar/Navbar";
 import Footer from "@/components/Footer";
 import Head from "next/head";
+import NextNProgress from "nextjs-progressbar";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
@@ -26,6 +27,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="min-h-screen flex flex-col">
+        <NextNProgress />
         <Navbar />
         <main className="flex-grow">
           <Component {...pageProps} />

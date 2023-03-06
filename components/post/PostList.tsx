@@ -3,6 +3,7 @@ import { categoryList } from "@/utils/category";
 import { Post } from "@prisma/client";
 import dayjs from "dayjs";
 import Image from "next/image";
+import Link from "next/link";
 
 interface Props {
   data: Post & { categories: number[] };
@@ -10,7 +11,7 @@ interface Props {
 
 const PostList: NextPage<Props> = ({ data }) => {
   const categoryName = categoryList.find(
-    (value) => data.categories[0] === value.categorieid
+    value => data.categories[0] === value.categorieid
   );
   const des = String(data.excerpt).replace("[&hellip;]", "");
   return (
@@ -42,7 +43,7 @@ const PostList: NextPage<Props> = ({ data }) => {
             className="leading-relaxed dark:text-gray-500"
             dangerouslySetInnerHTML={{ __html: des }}
           ></div>
-          <a
+          <Link
             href={data.slug}
             className="text-indigo-500 inline-flex items-center mt-4"
           >
@@ -59,7 +60,7 @@ const PostList: NextPage<Props> = ({ data }) => {
               <path d="M5 12h14" />
               <path d="M12 5l7 7-7 7" />
             </svg>
-          </a>
+          </Link>
         </div>
       </div>
     </>

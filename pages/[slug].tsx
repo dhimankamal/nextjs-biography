@@ -3,14 +3,15 @@ import { prisma } from "@/lib/db";
 import { Post } from "@prisma/client";
 import { useEffect, useState } from "react";
 import Breadcrumb from "@/components/Breadcrumb";
+import SideBar from "@/components/post/SideBar";
 
 interface Props {
   post: Post;
+  relatedPost: Post[];
 }
 
-const Post: NextPage<Props> = ({ post }) => {
+const Post: NextPage<Props> = ({ post, relatedPost }) => {
   let htmlString = post.content;
-
   const [cleanHtmlString, setCleanHtmlString] = useState("");
 
   useEffect(() => {
@@ -18,7 +19,7 @@ const Post: NextPage<Props> = ({ post }) => {
     const doc = parser.parseFromString(String(htmlString), "text/html");
     const elements = doc.querySelectorAll("[style],img");
 
-    elements.forEach((element) => {
+    elements.forEach(element => {
       if (element.tagName.toLowerCase() === "img") {
         element.removeAttribute("style");
         element.removeAttribute("height");
@@ -45,9 +46,10 @@ const Post: NextPage<Props> = ({ post }) => {
         <div className="post col-span-3 lg:col-span-2 rounded-lg p-2 md:p-4 lg:p-10 shadow-xl bg-white dark:bg-neutral-800 overflow-hidden">
           <div dangerouslySetInnerHTML={{ __html: cleanHtmlString }}></div>
         </div>
-        <div className="col-span-1 rounded-lg shadow-xl bg-white dark:bg-neutral-800">
-          {" "}
-          side
+        <div>
+          <div className="col-span-1 rounded-lg shadow-xl bg-white dark:bg-neutral-800 p-4">
+            <SideBar relatedPost={relatedPost} id={post.id} />
+          </div>
         </div>
       </div>
     </>
@@ -56,7 +58,7 @@ const Post: NextPage<Props> = ({ post }) => {
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const post: Post[] = await prisma.post.findMany();
-  const paths = post.map((element) => `/${element.slug}`);
+  const paths = post.map(element => `/${element.slug}`);
   return { paths, fallback: false };
 };
 
@@ -66,9 +68,21 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       slug: String(params?.slug),
     },
   });
+  const relatedPost: Post[] | null = await prisma.post.findMany({
+    where: {
+      categories: {
+        array_contains: post?.categories,
+      },
+    },
+    take: 8,
+    orderBy: {
+      date: "desc",
+    },
+  });
   return {
     props: {
       post,
+      relatedPost,
     },
   };
 };
