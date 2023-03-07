@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import MobileMenu from "./MobileMenu";
 import ThemeToggel from "./ThemeToggel";
 import { useRouter } from "next/router";
+import Logo from "../logo";
 
 interface Props {}
 
@@ -30,7 +31,7 @@ const Navbar: NextPage<Props> = ({}) => {
       setTheme("dark");
     }
     // const listener = () => {
-     // setTheme(mediaQuery.matches ? "dark" : "light");
+    // setTheme(mediaQuery.matches ? "dark" : "light");
     // };
     // mediaQuery.addListener(listener);
     // return () => {
@@ -68,7 +69,7 @@ const Navbar: NextPage<Props> = ({}) => {
       <header className="text-gray-600 z-50  dark:text-gray-300 body-font sticky top-0 bg-neutral-100 dark:bg-neutral-900 ">
         <div className="container mx-auto flex px-5 lg:py-5 flex-row items-center gap-2 z-10">
           <nav className="hidden lg:flex items-center justify-center lg:justify-start text-base w-full">
-            {navLinks.map((val) => {
+            {navLinks.map(val => {
               return (
                 <Link
                   key={val.name}
@@ -80,21 +81,13 @@ const Navbar: NextPage<Props> = ({}) => {
               );
             })}
           </nav>
-          <a className="flex order-first w-full lg:order-none lg:w-1/5 title-font font-medium items-center text-gray-900 lg:items-center lg:justify-center">
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              fill="none"
-              stroke="currentColor"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-              strokeWidth={2}
-              className="w-10 h-10 text-white p-2 bg-indigo-500 rounded-full"
-              viewBox="0 0 24 24"
-            >
-              <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5" />
-            </svg>
+          <Link
+            href="/"
+            className="flex order-first w-full lg:order-none lg:w-1/5 title-font font-medium items-center text-gray-900 lg:items-center lg:justify-center"
+          >
+            <Logo classes="w-20 fill-black" />
             <span className="ml-3 text-xl dark:text-white">GossipGeeks</span>
-          </a>
+          </Link>
           <div className="lg:hidden">
             <MobileMenu isActive={isActive} handleClick={handleClick} />
           </div>
@@ -105,7 +98,7 @@ const Navbar: NextPage<Props> = ({}) => {
       </header>
       {isActive && (
         <div className="fixed z-10 bg-neutral-100 top-0 h-screen dark:bg-neutral-900 w-full flex flex-col items-center justify-center gap-10">
-          {navLinks.map((val) => {
+          {navLinks.map(val => {
             return (
               <Link
                 key={val.name}
