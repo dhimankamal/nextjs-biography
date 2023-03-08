@@ -22,9 +22,8 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta name="author" content="kamal" />
         <meta name="robots" content="index, follow" />
         <link rel="canonical" href="https://www.gossipgeeks.com" />
-        <link rel="icon" href="/favicon.ico" />
+        <link rel="icon" href="/fevicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <link rel="icon" href="/favicon.ico" />
       </Head>
       <div className="min-h-screen flex flex-col">
         <NextNProgress />
