@@ -10,10 +10,7 @@ export default function App({ Component, pageProps }: AppProps) {
     <>
       <Head>
         <title>GossipGeeks</title>
-        <meta
-          name="description"
-          content="GossipGeeks is your ultimate source for the latest news and information about your favorite celebrities. Get the latest breaking news, exclusive stories, and behind-the-scenes features about your favorite stars."
-        />
+      
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta
           name="keywords"

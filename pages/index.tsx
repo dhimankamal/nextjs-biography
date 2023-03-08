@@ -22,14 +22,16 @@ const Home: NextPage<Props> = ({ post }) => {
       url: `/api/post/getpost?page=${page}`,
     });
     setItems([...items, ...res.data]);
-    console.log("loadmore", res);
   };
 
   return (
     <>
       <Head>
         <title>GossipGeeks - Your Ultimate Source for Celebrity News and Information</title>
-
+        <meta
+          name="description"
+          content="GossipGeeks is your ultimate source for the latest news and information about your favorite celebrities. Get the latest breaking news, exclusive stories, and behind-the-scenes features about your favorite stars."
+        />
       </Head>
       <section className="text-gray-600 body-font overflow-hidden">
         <div className="container px-5 py-10 lg:py-12 mx-auto">

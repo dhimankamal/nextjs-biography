@@ -20,7 +20,7 @@ const SideBar: NextPage<Props> = ({ relatedPost, id }) => {
               <Link
                 href="/"
                 key={val.id}
-                className="p-4 cursor-pointer bg-neutral-100 hover:bg-neutral-200 transition-all duration-500"
+                className="p-4 cursor-pointer bg-neutral-100 dark:bg-neutral-900 hover:bg-neutral-200 transition-all duration-500"
               >
                 {val.name}
               </Link>
