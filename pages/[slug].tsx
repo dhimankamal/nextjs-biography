@@ -33,7 +33,7 @@ const Post: NextPage<Props> = ({ post, relatedPost }) => {
   }, [htmlString]);
   return (
     <>
-      <div className="container mx-auto grid grid-cols-3 gap-8 px-2">
+      <div className="container mx-auto space-y-8 lg:space-y-0 lg:grid lg:grid-cols-3 gap-8 px-2">
         <div className="col-span-3">
           <Breadcrumb
             crumbs={[
@@ -43,7 +43,7 @@ const Post: NextPage<Props> = ({ post, relatedPost }) => {
           />
         </div>
 
-        <div className="post col-span-3 lg:col-span-2 rounded-lg p-2 md:p-4 lg:p-10 shadow-xl bg-white dark:bg-neutral-800 overflow-hidden">
+        <div className="post lg:col-span-2 rounded-lg p-2 md:p-4 lg:p-10 shadow-xl bg-white dark:bg-neutral-800 overflow-hidden">
           <div dangerouslySetInnerHTML={{ __html: cleanHtmlString }}></div>
         </div>
         <div>
