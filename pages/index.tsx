@@ -14,6 +14,7 @@ interface Props {
 const Home: NextPage<Props> = ({ post }) => {
   const [page, setPage] = useState(2);
   const [items, setItems] = useState(post);
+  const [hasMore, setHasmore] = useState(true);
 
   const handleLoadMore = async () => {
     setPage(page + 1);
@@ -21,13 +22,19 @@ const Home: NextPage<Props> = ({ post }) => {
       method: "GET",
       url: `/api/post/getpost?page=${page}`,
     });
-    setItems([...items, ...res.data]);
+    if (res.data && res.data.length > 0) {
+      setItems([...items, ...res.data]);
+    } else {
+      setHasmore(false);
+    }
   };
 
   return (
     <>
       <Head>
-        <title>GossipGeeks - Your Ultimate Source for Celebrity News and Information</title>
+        <title>
+          GossipGeeks - Your Ultimate Source for Celebrity News and Information
+        </title>
         <meta
           name="description"
           content="GossipGeeks is your ultimate source for the latest news and information about your favorite celebrities. Get the latest breaking news, exclusive stories, and behind-the-scenes features about your favorite stars."
@@ -38,7 +45,7 @@ const Home: NextPage<Props> = ({ post }) => {
           <InfiniteScroll
             dataLength={items.length}
             next={handleLoadMore}
-            hasMore={true}
+            hasMore={hasMore}
             loader={<h4 className="py-10 text-center">Loading...</h4>}
           >
             {items.map((data: any) => {

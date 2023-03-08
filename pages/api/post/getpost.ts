@@ -15,6 +15,9 @@ export default async function handler(
   const data = await prisma.post.findMany({
     take: pageSize,
     skip,
+    orderBy: {
+      date: "desc",
+    },
   });
 
   res.status(200).json(data);
