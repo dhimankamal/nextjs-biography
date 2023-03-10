@@ -4,13 +4,15 @@ import Navbar from "@/components/navbar/Navbar";
 import Footer from "@/components/Footer";
 import Head from "next/head";
 import NextNProgress from "nextjs-progressbar";
+import { GoogleAnalytics } from "nextjs-google-analytics";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
+      <GoogleAnalytics trackPageViews />
       <Head>
         <title>GossipGeeks</title>
-      
+
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta
           name="keywords"
