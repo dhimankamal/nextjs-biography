@@ -33,7 +33,7 @@ const getPostData = async (page: number) => {
 const updatePostData = async () => {
   try {
     let updateData: any[] = [];
-    for (let index = 1; index < 2; index++) {
+    for (let index = 4; index < 6; index++) {
       const data = await getPostData(index);
       if (data.length) {
         updateData = [...updateData, ...data];
@@ -55,7 +55,7 @@ const updatePostData = async () => {
         featured_media,
       } = post;
 
-      excerpt = excerpt.rendered
+      excerpt = excerpt.rendered;
 
       const $ = cheerio.load(content.rendered);
       // load HTML string into cheerio
@@ -112,7 +112,6 @@ const updatePostData = async () => {
 
       const postObj = {
         postid: String(id),
-        date,
         slug,
         content: $.html(),
         title: title.rendered,
@@ -120,13 +119,15 @@ const updatePostData = async () => {
         categories,
         tags,
         featured_media,
-        imagesUpdated:true
+        imagesUpdated: true,
       };
+      const currentDate = new Date().toISOString();
+      const newObj = { ...postObj, date: currentDate };
       console.log("id", title);
       await prisma.post.upsert({
         where: { slug: slug || "" },
         update: postObj,
-        create: postObj,
+        create: newObj,
       });
     }
     return `done ${updateData.length}`;
