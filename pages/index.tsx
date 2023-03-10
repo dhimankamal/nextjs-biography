@@ -41,7 +41,7 @@ const Home: NextPage<Props> = ({ post }) => {
         />
       </Head>
       <section className="text-gray-600 body-font overflow-hidden">
-        <div className="container px-5 py-10 lg:py-12 mx-auto">
+        <div className="container px-5 py-2 lg:py-12 mx-auto">
           <InfiniteScroll
             dataLength={items.length}
             next={handleLoadMore}
