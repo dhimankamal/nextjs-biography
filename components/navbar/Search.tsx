@@ -125,7 +125,7 @@ const Search: NextPage<Props> = ({}) => {
             ref={inputRef}
             onChange={e => setValue(e.target.value)}
             type="text"
-            className="w-full py-2 px-2 md:px-4 bg-transparent border-neutral-900 dark:border-white border rounded-md"
+            className="w-full bg-transparent bg-opacity-50 rounded border  focus:border-cyan-500  focus:ring-2 focus:ring-cyan-200 text-base outline-none dark:text-white py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
             placeholder="Search here"
           />
         </div>

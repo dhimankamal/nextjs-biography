@@ -45,7 +45,7 @@ const PostList: NextPage<Props> = ({ data }) => {
           ></div>
           <Link
             href={data.slug}
-            className="text-indigo-500 inline-flex items-center mt-4"
+            className="text-cyan-500 inline-flex items-center mt-4"
           >
             Learn More
             <svg

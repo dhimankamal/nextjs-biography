@@ -15,6 +15,8 @@ const Navbar: NextPage<Props> = ({}) => {
   const [showSeach, setShowSeach] = useState(false);
   const router = useRouter();
 
+  console.log("router",router.pathname)
+
   useEffect(() => {
     const handleRouteChange = () => {
       setIsActive(false);
@@ -78,11 +80,11 @@ const Navbar: NextPage<Props> = ({}) => {
             {navLinks.map(val => {
               return (
                 <Link
-                  key={val.name}
-                  href={val.href}
-                  className="mr-5 last:mr-0 cursor-pointer hover:text-gray-900 dark:hover:text-white"
+                  key={val?.name}
+                  href={val?.href}
+                  className={`mr-5 last:mr-0 cursor-pointer hover:text-gray-900 dark:hover:text-white transition-all duration-200 ${router.pathname === val.href?'border-b border-cyan-500':''}`}
                 >
-                  {val.name}
+                  {val?.name}
                 </Link>
               );
             })}

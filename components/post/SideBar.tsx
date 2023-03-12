@@ -54,7 +54,7 @@ const SideBar: NextPage<Props> = ({ relatedPost, id }) => {
                     />
                     <Link
                       href={val.slug}
-                      className="text-indigo-500 inline-flex items-center"
+                      className="text-cyan-500 inline-flex items-center"
                     >
                       Learn More
                       <svg

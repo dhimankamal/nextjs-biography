@@ -36,7 +36,7 @@ const Contact: NextPage<Props> = ({}) => {
                     id="name"
                     name="name"
                     required
-                    className="w-full bg-transparent bg-opacity-50 rounded border  focus:border-indigo-500  focus:ring-2 focus:ring-indigo-200 text-base outline-none dark:text-white py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                    className="w-full bg-transparent bg-opacity-50 rounded border  focus:border-cyan-500  focus:ring-2 focus:ring-cyan-200 text-base outline-none dark:text-white py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                   />
                 </div>
               </div>
@@ -53,7 +53,7 @@ const Contact: NextPage<Props> = ({}) => {
                     id="email"
                     name="email"
                     required
-                    className="w-full bg-transparent bg-opacity-50 rounded border  focus:border-indigo-500  focus:ring-2 focus:ring-indigo-200 text-base outline-none dark:text-white py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
+                    className="w-full bg-transparent bg-opacity-50 rounded border  focus:border-cyan-500  focus:ring-2 focus:ring-cyan-200 text-base outline-none dark:text-white py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
                   />
                 </div>
               </div>
@@ -69,7 +69,7 @@ const Contact: NextPage<Props> = ({}) => {
                     id="message"
                     name="message"
                     required
-                    className="w-full bg-transparent bg-opacity-50 rounded border border-gray-300 focus:border-indigo-500  focus:ring-2 focus:ring-indigo-200 h-32 text-base outline-none text-gray-700 dark:text-white py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"
+                    className="w-full bg-transparent bg-opacity-50 rounded border border-gray-300 focus:border-cyan-500  focus:ring-2 focus:ring-cyan-200 h-32 text-base outline-none text-gray-700 dark:text-white py-1 px-3 resize-none leading-6 transition-colors duration-200 ease-in-out"
                     defaultValue={""}
                   />
                 </div>
@@ -77,14 +77,14 @@ const Contact: NextPage<Props> = ({}) => {
               <div className="p-2 w-full">
                 <button
                   type="submit"
-                  className="flex mx-auto text-white bg-indigo-500 border-0 py-2 px-8 focus:outline-none hover:bg-indigo-600 rounded text-lg"
+                  className="flex mx-auto text-white bg-cyan-500 border-0 py-2 px-8 focus:outline-none hover:bg-cyan-600 rounded text-lg"
                 >
                   Send Now
                 </button>
               </div>
               <div className="p-2 w-full pt-8 mt-8 border-t border-gray-200 text-center">
                 <div className="pb-4">
-                  <a className="text-indigo-500">contact@gossipgeeks.net</a>
+                  <a className="text-cyan-500">contact@gossipgeeks.net</a>
                 </div>
 
                 <span className="inline-flex">
