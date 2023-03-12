@@ -19,7 +19,7 @@ const renderLinks = (quickLinks: Post[]) => {
             href={val.slug}
             className="flex items-baseline gap-2 opacity-70 cursor-pointer hover:opacity-100 transition-opacity duration-300"
           >
-            <ArrowIcon classes="w-4 lg:w-2 dark:fill-white fill-black" />
+            <ArrowIcon classes="w-4 lg:w-2 dark:fill-white fill-neutral-900" />
             <span dangerouslySetInnerHTML={{ __html: val.title }}></span>
           </Link>
         </li>
@@ -116,7 +116,7 @@ const Search: NextPage<Props> = ({}) => {
   }, []);
 
   return (
-    <div className="container mx-auto p-4">
+    <div className="container mx-auto p-4 max-h-[70vh] overflow-auto mb-4">
       <div className="flex gap-4 items-center ">
         <SearchIcon classes="w-6 hidden md:block dark:fill-white" />
 
@@ -125,7 +125,7 @@ const Search: NextPage<Props> = ({}) => {
             ref={inputRef}
             onChange={e => setValue(e.target.value)}
             type="text"
-            className="w-full py-2 px-2 md:px-4 bg-transparent border-black dark:border-white border rounded-md"
+            className="w-full py-2 px-2 md:px-4 bg-transparent border-neutral-900 dark:border-white border rounded-md"
             placeholder="Search here"
           />
         </div>

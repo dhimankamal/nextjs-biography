@@ -18,6 +18,7 @@ const Navbar: NextPage<Props> = ({}) => {
   useEffect(() => {
     const handleRouteChange = () => {
       setIsActive(false);
+      setShowSeach(false);
     };
 
     router.events.on("routeChangeStart", handleRouteChange);
@@ -69,8 +70,6 @@ const Navbar: NextPage<Props> = ({}) => {
       href: "/contact",
     },
   ];
-
-  console.log("showSeach", showSeach);
   return (
     <>
       <header className="text-gray-600 z-50  dark:text-gray-300 body-font sticky top-0 bg-neutral-100/80 dark:bg-neutral-900/80 transition-all duration-500 backdrop-blur-xl">
@@ -92,14 +91,14 @@ const Navbar: NextPage<Props> = ({}) => {
             href="/"
             className="flex order-first w-full lg:order-none lg:w-1/5 title-font font-medium items-center text-gray-900 lg:items-center lg:justify-center"
           >
-            <Logo classes="w-12 md:w-14 fill-black dark:fill-white transition-all" />
+            <Logo classes="w-12 md:w-14 fill-neutral-900 dark:fill-white transition-all" />
             <span className="hidden md:block ml-3 text-xl dark:text-white">
               GossipGeeks
             </span>
           </Link>
           <div className="flex items-center gap-2 lg:hidden">
             <button onClick={() => setShowSeach(!showSeach)}>
-              <SearchIcon classes="w-6 h-full fill-black dark:fill-white " />
+              <SearchIcon classes="w-6 h-full fill-neutral-900 dark:fill-white " />
             </button>
             <ThemeToggel theme={theme} toggleTheme={toggleTheme} />
             <MobileMenu isActive={isActive} handleClick={handleClick} />
@@ -107,7 +106,7 @@ const Navbar: NextPage<Props> = ({}) => {
 
           <div className="w-full hidden lg:justify-end lg:ml-0 lg:flex items-center justify-center">
             <button onClick={() => setShowSeach(!showSeach)}>
-              <SearchIcon classes="w-6 h-full fill-black dark:fill-white " />
+              <SearchIcon classes="w-6 h-full fill-neutral-900 dark:fill-white " />
             </button>
             <ThemeToggel theme={theme} toggleTheme={toggleTheme} />
           </div>

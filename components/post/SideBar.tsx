@@ -36,7 +36,10 @@ const SideBar: NextPage<Props> = ({ relatedPost, id }) => {
               return null;
             } else {
               return (
-                <div key={val.id} className="grid gap-2 border-b pb-4">
+                <div
+                  key={val.id}
+                  className="grid grid-cols-3 gap-4 border-b dark:border-neutral-900 pb-4"
+                >
                   <Image
                     src={val.imageUrl || "https://dummyimage.com/200x300"}
                     className="rounded-2xl w-full"
@@ -44,28 +47,30 @@ const SideBar: NextPage<Props> = ({ relatedPost, id }) => {
                     height="300"
                     alt="feature-image"
                   />
-                  <h3
-                    className="font-semibold"
-                    dangerouslySetInnerHTML={{ __html: val.title }}
-                  />
-                  <Link
-                    href={val.slug}
-                    className="text-indigo-500 inline-flex items-center"
-                  >
-                    Learn More
-                    <svg
-                      className="w-4 h-4 ml-2"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      strokeWidth={2}
-                      fill="none"
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
+                  <div className="col-span-2">
+                    <h3
+                      className="font-semibold"
+                      dangerouslySetInnerHTML={{ __html: val.title }}
+                    />
+                    <Link
+                      href={val.slug}
+                      className="text-indigo-500 inline-flex items-center"
                     >
-                      <path d="M5 12h14" />
-                      <path d="M12 5l7 7-7 7" />
-                    </svg>
-                  </Link>
+                      Learn More
+                      <svg
+                        className="w-4 h-4 ml-2"
+                        viewBox="0 0 24 24"
+                        stroke="currentColor"
+                        strokeWidth={2}
+                        fill="none"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                      >
+                        <path d="M5 12h14" />
+                        <path d="M12 5l7 7-7 7" />
+                      </svg>
+                    </Link>
+                  </div>
                 </div>
               );
             }

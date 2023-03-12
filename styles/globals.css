@@ -9,7 +9,7 @@ body {
   padding: 0;
   margin: 0;
   font-family: "Fira Code", monospace;
-  @apply bg-neutral-100 dark:bg-neutral-900 text-black dark:text-white transition-colors duration-300;
+  @apply bg-neutral-100 dark:bg-neutral-900 text-neutral-900 dark:text-white transition-colors duration-300;
 }
 
 a {
@@ -106,7 +106,7 @@ a {
   transition: stroke-dasharray 400ms, stroke-dashoffset 400ms;
   stroke-width: 5.5;
   stroke-linecap: round;
-  @apply stroke-black dark:stroke-white;
+  @apply stroke-neutral-900 dark:stroke-white;
 }
 
 .ham1 .top {
