@@ -15,7 +15,7 @@ const Navbar: NextPage<Props> = ({}) => {
   const [showSeach, setShowSeach] = useState(false);
   const router = useRouter();
 
-  console.log("router",router.pathname)
+  console.log("router", router.pathname);
 
   useEffect(() => {
     const handleRouteChange = () => {
@@ -82,7 +82,11 @@ const Navbar: NextPage<Props> = ({}) => {
                 <Link
                   key={val?.name}
                   href={val?.href}
-                  className={`mr-5 last:mr-0 cursor-pointer hover:text-gray-900 dark:hover:text-white transition-all duration-200 ${router.pathname === val.href?'border-b border-cyan-500':''}`}
+                  className={`mr-5 last:mr-0 cursor-pointer hover:text-gray-900 dark:hover:text-white transition-all duration-200 ${
+                    router.pathname === val.href
+                      ? "border-b border-cyan-500"
+                      : ""
+                  }`}
                 >
                   {val?.name}
                 </Link>
@@ -98,19 +102,15 @@ const Navbar: NextPage<Props> = ({}) => {
               GossipGeeks
             </span>
           </Link>
-          <div className="flex items-center gap-2 lg:hidden">
-            <button onClick={() => setShowSeach(!showSeach)}>
-              <SearchIcon classes="w-6 h-full fill-neutral-900 dark:fill-white " />
-            </button>
-            <ThemeToggel theme={theme} toggleTheme={toggleTheme} />
-            <MobileMenu isActive={isActive} handleClick={handleClick} />
-          </div>
 
-          <div className="w-full hidden lg:justify-end lg:ml-0 lg:flex items-center justify-center">
+          <div className="flex items-center gap-2 lg:w-full lg:ml-0 lg:flex lg:items-center lg:justify-end">
             <button onClick={() => setShowSeach(!showSeach)}>
               <SearchIcon classes="w-6 h-full fill-neutral-900 dark:fill-white " />
             </button>
             <ThemeToggel theme={theme} toggleTheme={toggleTheme} />
+            <div className="lg:hidden">
+              <MobileMenu isActive={isActive} handleClick={handleClick} />
+            </div>
           </div>
         </div>
         {showSeach && <Search />}
@@ -128,7 +128,6 @@ const Navbar: NextPage<Props> = ({}) => {
               </Link>
             );
           })}
-          
         </div>
       )}
     </>
