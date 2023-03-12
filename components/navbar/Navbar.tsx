@@ -51,7 +51,10 @@ const Navbar: NextPage<Props> = ({}) => {
   const toggleTheme = () => {
     setTheme(theme === "light" ? "dark" : "light");
   };
-  const handleClick = () => setIsActive(!isActive);
+  const handleClick = () => {
+    setIsActive(!isActive);
+    setShowSeach(false);
+  };
   const navLinks = [
     {
       name: "Home",
@@ -71,7 +74,7 @@ const Navbar: NextPage<Props> = ({}) => {
   return (
     <>
       <header className="text-gray-600 z-50  dark:text-gray-300 body-font sticky top-0 bg-neutral-100/80 dark:bg-neutral-900/80 transition-all duration-500 backdrop-blur-xl">
-        <div className="container mx-auto flex px-5 lg:py-2 flex-row items-center gap-2 z-10">
+        <div className="container mx-auto flex px-2 lg:px-5 lg:py-2 flex-row items-center gap-2 z-10">
           <nav className="hidden lg:flex items-center justify-center lg:justify-start text-base w-full">
             {navLinks.map(val => {
               return (
@@ -89,12 +92,16 @@ const Navbar: NextPage<Props> = ({}) => {
             href="/"
             className="flex order-first w-full lg:order-none lg:w-1/5 title-font font-medium items-center text-gray-900 lg:items-center lg:justify-center"
           >
-            <Logo classes="w-14 md:w-14 fill-black dark:fill-white transition-all" />
+            <Logo classes="w-12 md:w-14 fill-black dark:fill-white transition-all" />
             <span className="hidden md:block ml-3 text-xl dark:text-white">
               GossipGeeks
             </span>
           </Link>
-          <div className="lg:hidden">
+          <div className="flex items-center gap-2 lg:hidden">
+            <button onClick={() => setShowSeach(!showSeach)}>
+              <SearchIcon classes="w-6 h-full fill-black dark:fill-white " />
+            </button>
+            <ThemeToggel theme={theme} toggleTheme={toggleTheme} />
             <MobileMenu isActive={isActive} handleClick={handleClick} />
           </div>
 
@@ -102,11 +109,9 @@ const Navbar: NextPage<Props> = ({}) => {
             <button onClick={() => setShowSeach(!showSeach)}>
               <SearchIcon classes="w-6 h-full fill-black dark:fill-white " />
             </button>
-
             <ThemeToggel theme={theme} toggleTheme={toggleTheme} />
           </div>
         </div>
-
         {showSeach && <Search />}
       </header>
       {isActive && (
@@ -122,7 +127,7 @@ const Navbar: NextPage<Props> = ({}) => {
               </Link>
             );
           })}
-          <ThemeToggel theme={theme} toggleTheme={toggleTheme} />
+          
         </div>
       )}
     </>

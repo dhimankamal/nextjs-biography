@@ -17,9 +17,9 @@ const renderLinks = (quickLinks: Post[]) => {
         <li key={val.id} className="">
           <Link
             href={val.slug}
-            className="flex gap-2 opacity-70 cursor-pointer hover:opacity-100 transition-opacity duration-300"
+            className="flex items-baseline gap-2 opacity-70 cursor-pointer hover:opacity-100 transition-opacity duration-300"
           >
-            <ArrowIcon classes="w-2 fill-white" />
+            <ArrowIcon classes="w-4 lg:w-2 dark:fill-white fill-black" />
             <span dangerouslySetInnerHTML={{ __html: val.title }}></span>
           </Link>
         </li>
@@ -35,7 +35,7 @@ const skelton = () => {
       {array.map(value => {
         return (
           <li key={value}>
-            <div className="w-1/2 bg-neutral-200 h-6 rounded-md"></div>
+            <div className="lg:w-1/2 bg-neutral-200 h-6 rounded-md"></div>
           </li>
         );
       })}
@@ -118,20 +118,19 @@ const Search: NextPage<Props> = ({}) => {
   return (
     <div className="container mx-auto p-4">
       <div className="flex gap-4 items-center ">
-        <div>
-          <SearchIcon classes="w-6 fill-white" />
-        </div>
+        <SearchIcon classes="w-6 hidden md:block dark:fill-white" />
+
         <div className="w-full">
           <input
             ref={inputRef}
             onChange={e => setValue(e.target.value)}
             type="text"
-            className="w-full py-2 px-4 bg-transparent border-white border rounded-md"
+            className="w-full py-2 px-2 md:px-4 bg-transparent border-black dark:border-white border rounded-md"
             placeholder="Search here"
           />
         </div>
       </div>
-      <div className="p-6">
+      <div className="px-2 py-6 lg:px-6 ">
         {!searchData.length && !value ? (
           <>
             <p className="mb-4 font-bold text-xl">Quick Links</p>
