@@ -13,7 +13,7 @@ const MobileMenu: NextPage<Props> = ({ isActive, handleClick }) => {
           isActive ? "active" : ""
         } `}
         viewBox="0 0 100 100"
-        width={80}
+        width={60}
         onClick={handleClick}
       >
         <path

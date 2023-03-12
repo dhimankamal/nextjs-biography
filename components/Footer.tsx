@@ -1,6 +1,6 @@
 import { NextPage } from "next";
 import Link from "next/link";
-import Logo from "./logo";
+import { Logo } from "./icon";
 
 interface Props {}
 

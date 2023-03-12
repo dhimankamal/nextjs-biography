@@ -73,7 +73,7 @@ a {
 }
 
 #theme-toggle + label {
-  @apply inline-block cursor-pointer h-12 w-12 rounded-full duration-300 content-[''];
+  @apply inline-block cursor-pointer h-8 w-8 rounded-full duration-300 content-[''];
 }
 
 #theme-toggle:not(:checked) + label {
@@ -82,7 +82,7 @@ a {
 
 #theme-toggle:checked + label {
   @apply bg-transparent;
-  box-shadow: inset -18px -16px 1px 1px #ddd;
+  box-shadow: inset -12px -12px 1px 1px #ddd;
 }
 
 /* hamburger */
