@@ -18,7 +18,7 @@ const SideBar: NextPage<Props> = ({ relatedPost, id }) => {
           {categoryList.map(val => {
             return (
               <Link
-                href="/"
+                href={`/category/${val.slug}`}
                 key={val.id}
                 className="p-4 cursor-pointer bg-neutral-100 dark:bg-neutral-900 hover:bg-neutral-200 transition-all duration-500"
               >

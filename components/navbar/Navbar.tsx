@@ -64,6 +64,10 @@ const Navbar: NextPage<Props> = ({}) => {
       href: "/",
     },
     {
+      name: "Category",
+      href: "/category",
+    },
+    {
       name: "About",
       href: "/about",
     },

@@ -44,7 +44,7 @@ const PostList: NextPage<Props> = ({ data }) => {
             dangerouslySetInnerHTML={{ __html: des }}
           ></div>
           <Link
-            href={data.slug}
+            href={`/${data.slug}`}
             className="text-cyan-500 inline-flex items-center mt-4"
           >
             Learn More
