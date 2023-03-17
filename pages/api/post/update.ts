@@ -5,7 +5,7 @@ const cheerio = require("cheerio");
 const cloudinary = require("cloudinary").v2;
 
 type Data = {
-  name: string;
+  name: any;
 };
 // configure Cloudinary
 cloudinary.config({
@@ -33,7 +33,7 @@ const getPostData = async (page: number) => {
 const updatePostData = async () => {
   try {
     let updateData: any[] = [];
-    for (let index = 1; index < 2; index++) {
+    for (let index = 1; index < 3; index++) {
       const data = await getPostData(index);
       if (data.length) {
         updateData = [...updateData, ...data];
@@ -141,5 +141,5 @@ export default async function handler(
   res: NextApiResponse<Data>
 ) {
   let response = await updatePostData();
-  res.status(200).json({ name: "John Doe" });
+  res.status(200).json({ name: response });
 }

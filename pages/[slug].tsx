@@ -14,8 +14,11 @@ interface Props {
 const Post: NextPage<Props> = ({ post, relatedPost }) => {
   let htmlString = post.content;
   const [cleanHtmlString, setCleanHtmlString] = useState("");
-  const des = String(post.excerpt).replace("[&hellip;]", "").replace("<p>","").replace("</p>","");
-  const title = post.title.replace("&amp;","&")
+  const des = String(post.excerpt)
+    .replace("[&hellip;]", "")
+    .replace("<p>", "")
+    .replace("</p>", "");
+  const title = post.title.replace("&amp;", "&");
 
   useEffect(() => {
     const parser = new DOMParser();
@@ -35,15 +38,11 @@ const Post: NextPage<Props> = ({ post, relatedPost }) => {
     setCleanHtmlString(doc.documentElement.outerHTML);
   }, [htmlString]);
 
-
   return (
     <>
-     <Head>
+      <Head>
         <title>{title}</title>
-        <meta
-          name="description"
-          content={des}
-        />
+        <meta name="description" content={des} />
       </Head>
       <div className="container mx-auto space-y-8 lg:space-y-0 lg:grid lg:grid-cols-3 gap-8 px-2">
         <div className="col-span-3">
