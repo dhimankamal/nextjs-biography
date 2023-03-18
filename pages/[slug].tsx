@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import Breadcrumb from "@/components/Breadcrumb";
 import SideBar from "@/components/post/SideBar";
 import Head from "next/head";
+import { NextSeo } from "next-seo";
 
 interface Props {
   post: Post;
@@ -44,12 +45,17 @@ const Post: NextPage<Props> = ({ post, relatedPost }) => {
         <title>{title}</title>
         <meta name="description" content={des} />
       </Head>
+      <NextSeo
+        title={`${title} | Gossipgeeks`}
+        description={des}
+        canonical={`${process.env.NEXT_PUBLIC_DOMAIN_URL}${post.slug}`}
+      />
       <div className="container mx-auto space-y-8 lg:space-y-0 lg:grid lg:grid-cols-3 gap-8 px-2">
         <div className="col-span-3">
           <Breadcrumb
             crumbs={[
               { name: "Home", href: "/" },
-              { name: post.title, href: "/" },
+              { name: post.title, href: post.slug },
             ]}
           />
         </div>

@@ -1,11 +1,17 @@
 import Breadcrumb from "@/components/Breadcrumb";
 import { NextPage } from "next";
+import { NextSeo } from "next-seo";
 
 interface Props {}
 
 const Contact: NextPage<Props> = ({}) => {
   return (
     <>
+      <NextSeo
+        title="Contact Us - Get In Touch With Our Team Today | Gossipgeeks"
+        description="Get in touch with us! Contact our team for any inquiries, feedback, or assistance. We're always here to help you. Fill out our contact form or reach us through our email and phone number. Let's connect and work together towards your needs."
+        canonical={`${process.env.NEXT_PUBLIC_DOMAIN_URL}contact`}
+      />
       <div className="container mx-auto">
         <Breadcrumb
           crumbs={[

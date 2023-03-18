@@ -6,6 +6,7 @@ import PostList from "@/components/post/PostList";
 import { useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import axios from "axios";
+import { NextSeo } from "next-seo";
 
 interface Props {
   post: Post[];
@@ -31,15 +32,13 @@ const Home: NextPage<Props> = ({ post }) => {
 
   return (
     <>
-      <Head>
-        <title>
-          GossipGeeks - Your Ultimate Source for Celebrity News and Information
-        </title>
-        <meta
-          name="description"
-          content="GossipGeeks is your ultimate source for the latest news and information about your favorite celebrities. Get the latest breaking news, exclusive stories, and behind-the-scenes features about your favorite stars."
-        />
-      </Head>
+      <NextSeo
+        title="GossipGeeks - Your Ultimate Source for Celebrity News and Information"
+        description="GossipGeeks is your ultimate source for the latest news and information about your favorite celebrities. Get the latest breaking news, exclusive stories, and behind-the-scenes features about your favorite stars."
+        canonical={`${process.env.NEXT_PUBLIC_DOMAIN_URL}`}
+       
+      />
+
       <section className="text-gray-600 body-font overflow-hidden">
         <div className="container px-5 py-2 lg:py-12 mx-auto">
           <InfiniteScroll

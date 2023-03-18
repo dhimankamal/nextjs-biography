@@ -5,27 +5,39 @@ import Footer from "@/components/Footer";
 import Head from "next/head";
 import NextNProgress from "nextjs-progressbar";
 import { GoogleAnalytics } from "nextjs-google-analytics";
+import { DefaultSeo } from "next-seo";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <GoogleAnalytics trackPageViews />
+      <DefaultSeo
+        title="GossipGeeks - Your Ultimate Source for Celebrity News and Information"
+        description="GossipGeeks is your ultimate source for the latest news and information about your favorite celebrities. Get the latest breaking news, exclusive stories, and behind-the-scenes features about your favorite stars."
+        openGraph={{
+          type: "website",
+          locale: "en_IE",
+          url: "https://www.gossipgeeks.net/",
+          siteName: "Gossipgeeks",
+        }}
+        // twitter={{
+        //   handle: "@handle",
+        //   site: "@",
+        //   cardType: "summary_large_image",
+        // }}
+      />
       <Head>
-        <title>GossipGeeks</title>
-
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta
           name="keywords"
           content="GossipGeeks, celebrity news, entertainment news, celebrity gossip"
         />
-        <meta name="author" content="kamal" />
         <meta name="robots" content="index, follow" />
-        <link rel="canonical" href="https://www.gossipgeeks.com" />
         <link rel="icon" href="/fevicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
       <div className="min-h-screen flex flex-col">
-        <NextNProgress color="#06b6d4"/>
+        <NextNProgress color="#06b6d4" />
         <Navbar />
         <main className="flex-grow">
           <Component {...pageProps} />
