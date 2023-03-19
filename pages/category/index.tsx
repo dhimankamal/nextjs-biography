@@ -21,7 +21,7 @@ const CategoryPage: NextPage<Props> = ({}) => {
               <Link
                 href={`/category/${val.slug}`}
                 key={val.id}
-                className="p-4 cursor-pointer bg-neutral-100 dark:bg-neutral-800 hover:bg-neutral-200 transition-all duration-500 rounded-md"
+                className="p-4 cursor-pointer bg-white dark:bg-neutral-800 hover:bg-neutral-200 transition-all duration-500 rounded-md"
               >
                 {val.name}
               </Link>

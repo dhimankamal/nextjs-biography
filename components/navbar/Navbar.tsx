@@ -108,6 +108,7 @@ const Navbar: NextPage<Props> = ({}) => {
           </nav>
           <Link
             href="/"
+            aria-label="Home"
             className="flex order-first w-fit title-font font-medium items-center text-gray-900 lg:items-center lg:justify-center"
           >
             <Logo classes="w-12 md:w-14 fill-neutral-900 dark:fill-white transition-all" />
@@ -117,7 +118,7 @@ const Navbar: NextPage<Props> = ({}) => {
           </Link>
 
           <div className="flex items-center gap-2 lg:flex lg:items-center lg:justify-end">
-            <button onClick={() => setShowSeach(!showSeach)}>
+            <button onClick={() => setShowSeach(!showSeach)} aria-label="Search">
               <SearchIcon classes="w-6 h-full fill-neutral-900 dark:fill-white " />
             </button>
             <ThemeToggel theme={theme} toggleTheme={toggleTheme} />
