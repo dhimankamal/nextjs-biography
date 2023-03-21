@@ -6,11 +6,17 @@ import Head from "next/head";
 import NextNProgress from "nextjs-progressbar";
 import { GoogleAnalytics } from "nextjs-google-analytics";
 import { DefaultSeo } from "next-seo";
+import Script from "next/script";
 
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
       <GoogleAnalytics trackPageViews />
+      <Script
+        async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2446438232158113"
+        crossOrigin="anonymous"
+      ></Script>
       <DefaultSeo
         title="GossipGeeks - Your Ultimate Source for Celebrity News and Information"
         description="GossipGeeks is your ultimate source for the latest news and information about your favorite celebrities. Get the latest breaking news, exclusive stories, and behind-the-scenes features about your favorite stars."
