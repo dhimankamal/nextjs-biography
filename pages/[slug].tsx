@@ -49,8 +49,28 @@ const Post: NextPage<Props> = ({ post, relatedPost }) => {
         title={`${title} | Gossipgeeks`}
         description={des}
         canonical={`${process.env.NEXT_PUBLIC_DOMAIN_URL}${post.slug}`}
+        openGraph={{
+          type: "article",
+          article: {
+            publishedTime: post?.date,
+            modifiedTime: post?.date,
+            authors: ["https://in.pinterest.com/gossipgeeks"],
+            tags: [
+              "Biography",
+              "Celebrity news",
+              "bollywood celebrity news",
+              "celebrity news today",
+            ],
+          },
+          url: `${process.env.NEXT_PUBLIC_DOMAIN_URL}${post.slug}`,
+          site_name: "Gossip Geeks",
+        }}
       />
-      <div className="container mx-auto space-y-8 lg:space-y-0 lg:grid lg:grid-cols-3 gap-8 px-2">
+      <div
+        itemScope
+        itemType="https://schema.org/NewsArticle"
+        className="container mx-auto space-y-8 lg:space-y-0 lg:grid lg:grid-cols-3 gap-8 px-2"
+      >
         <div className="col-span-3">
           <Breadcrumb
             crumbs={[
@@ -59,7 +79,7 @@ const Post: NextPage<Props> = ({ post, relatedPost }) => {
             ]}
           />
         </div>
-
+        <meta itemProp="image" content={post?.imageUrl || ""} />
         <div className="post lg:col-span-2 rounded-lg p-2 md:p-4 lg:p-10 shadow-xl bg-white dark:bg-neutral-800 overflow-hidden">
           <div dangerouslySetInnerHTML={{ __html: cleanHtmlString }}></div>
         </div>
