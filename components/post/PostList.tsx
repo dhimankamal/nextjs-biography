@@ -4,6 +4,7 @@ import { Post } from "@prisma/client";
 import dayjs from "dayjs";
 import Image from "next/image";
 import Link from "next/link";
+import SocialShare from "../SocialShare";
 
 interface Props {
   data: Post & { categories: number[] };
@@ -34,33 +35,39 @@ const PostList: NextPage<Props> = ({ data }) => {
             alt="feature-image"
           />
         </div>
-        <div className="col-span-2 lg:col-span-3">
-          <h2
-            className="text-2xl font-medium text-gray-900 dark:text-gray-200 title-font mb-2"
-            dangerouslySetInnerHTML={{ __html: data.title }}
-          ></h2>
-          <div
-            className="leading-relaxed dark:text-gray-500"
-            dangerouslySetInnerHTML={{ __html: des }}
-          ></div>
-          <Link
-            href={`/${data.slug}`}
-            className="text-cyan-500 inline-flex items-center mt-4"
-          >
-            Learn More
-            <svg
-              className="w-4 h-4 ml-2"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              strokeWidth={2}
-              fill="none"
-              strokeLinecap="round"
-              strokeLinejoin="round"
+        <div className="col-span-2 lg:col-span-3 flex flex-col justify-between gap-2">
+          <div>
+            <h2
+              className="text-2xl font-medium text-gray-900 dark:text-gray-200 title-font mb-2"
+              dangerouslySetInnerHTML={{ __html: data.title }}
+            ></h2>
+            <div
+              className="leading-relaxed dark:text-gray-500"
+              dangerouslySetInnerHTML={{ __html: des }}
+            ></div>
+          </div>
+
+          <div className="flex flex-col items-start md:flex-row md:items-center justify-between mt-4 gap-4">
+            <Link
+              href={`/${data.slug}`}
+              className="text-cyan-500 inline-flex items-center "
             >
-              <path d="M5 12h14" />
-              <path d="M12 5l7 7-7 7" />
-            </svg>
-          </Link>
+              Learn More
+              <svg
+                className="w-4 h-4 ml-2"
+                viewBox="0 0 24 24"
+                stroke="currentColor"
+                strokeWidth={2}
+                fill="none"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
+                <path d="M5 12h14" />
+                <path d="M12 5l7 7-7 7" />
+              </svg>
+            </Link>
+            <SocialShare slug={data.slug} title={data?.title} />
+          </div>
         </div>
       </div>
     </>

@@ -3,15 +3,24 @@ import { Post } from "@prisma/client";
 import { NextPage } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import SocialShare from "../SocialShare";
 
 interface Props {
   relatedPost: Post[];
   id: string;
+  slug: string;
+  title: string;
 }
 
-const SideBar: NextPage<Props> = ({ relatedPost, id }) => {
+const SideBar: NextPage<Props> = ({ relatedPost, id, slug, title }) => {
   return (
     <>
+      <div className="mb-4">
+        <h3 className="text-2xl font-bold mb-4">Share this post</h3>
+        <div className="flex flex-col space-y-4 rounded-lg">
+          <SocialShare slug={slug} title={title} />
+        </div>
+      </div>
       <div className="mb-4">
         <h3 className="text-2xl font-bold mb-4">Category</h3>
         <div className="flex flex-col space-y-4 rounded-lg">

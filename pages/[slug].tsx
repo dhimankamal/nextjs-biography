@@ -39,6 +39,8 @@ const Post: NextPage<Props> = ({ post, relatedPost }) => {
     setCleanHtmlString(doc.documentElement.outerHTML);
   }, [htmlString]);
 
+  console.log("${process.env.NEXT_PUBLIC_DOMAIN_URL}${post.slug}",`${post.slug}`)
+
   return (
     <>
       <Head>
@@ -85,7 +87,7 @@ const Post: NextPage<Props> = ({ post, relatedPost }) => {
         </div>
         <div>
           <div className="col-span-1 rounded-lg shadow-xl bg-white dark:bg-neutral-800 p-4">
-            <SideBar relatedPost={relatedPost} id={post.id} />
+            <SideBar relatedPost={relatedPost} id={post.id} slug={post.slug} title={title} />
           </div>
         </div>
       </div>

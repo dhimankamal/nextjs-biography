@@ -7,7 +7,6 @@ import { useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import axios from "axios";
 import { NextSeo } from "next-seo";
-
 interface Props {
   post: Post[];
 }
