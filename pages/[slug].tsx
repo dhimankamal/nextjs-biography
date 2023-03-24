@@ -43,10 +43,6 @@ const Post: NextPage<Props> = ({ post, relatedPost }) => {
 
   return (
     <>
-      <Head>
-        <title>{title}</title>
-        <meta name="description" content={des} />
-      </Head>
       <NextSeo
         title={`${title} | Gossipgeeks`}
         description={des}
