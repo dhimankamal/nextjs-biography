@@ -18,9 +18,7 @@ interface Props {
 }
 
 const SocialShare: NextPage<Props> = ({ slug, title }) => {
-  console.log("slug", slug)
   const url = `${process.env.NEXT_PUBLIC_DOMAIN_URL}${slug}`;
-  console.log("url", url)
   return (
     <div className="flex gap-2">
       <FacebookShareButton url={url} quote={title}>

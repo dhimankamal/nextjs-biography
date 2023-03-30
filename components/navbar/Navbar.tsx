@@ -15,8 +15,6 @@ const Navbar: NextPage<Props> = ({}) => {
   const [showSeach, setShowSeach] = useState(false);
   const router = useRouter();
 
-  console.log("router", router.pathname);
-
   useEffect(() => {
     const handleRouteChange = () => {
       setIsActive(false);

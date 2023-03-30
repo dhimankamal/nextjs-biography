@@ -6,6 +6,7 @@ import Breadcrumb from "@/components/Breadcrumb";
 import SideBar from "@/components/post/SideBar";
 import Head from "next/head";
 import { NextSeo } from "next-seo";
+import Image from "next/image";
 
 interface Props {
   post: Post;
@@ -38,8 +39,6 @@ const Post: NextPage<Props> = ({ post, relatedPost }) => {
 
     setCleanHtmlString(doc.documentElement.outerHTML);
   }, [htmlString]);
-
-  console.log("${process.env.NEXT_PUBLIC_DOMAIN_URL}${post.slug}",`${post.slug}`)
 
   return (
     <>
@@ -78,12 +77,35 @@ const Post: NextPage<Props> = ({ post, relatedPost }) => {
           />
         </div>
         <meta itemProp="image" content={post?.imageUrl || ""} />
+
         <div className="post lg:col-span-2 rounded-lg p-2 md:p-4 lg:p-10 shadow-xl bg-white dark:bg-neutral-800 overflow-hidden">
+          <div className="flex text-left bg-neutral-100 dark:bg-neutral-900 rounded-lg py-2 px-4 items-center jus gap-4">
+            <Image
+              className="!rounded-md"
+              width={100}
+              height={100}
+              alt={post.title}
+              src={post?.imageUrl || ""}
+            />
+            <h2>This article is all about {post.title}</h2>
+          </div>
           <div dangerouslySetInnerHTML={{ __html: cleanHtmlString }}></div>
+          <p>
+            <b>NOTE:</b> The following article on the {post.title} was
+            originally published on starsunfolded.com:{" "}
+            <a rel="nofollow" href={`https://starsunfolded.com/${post.slug}`}>
+              Visit here original article
+            </a>
+          </p>
         </div>
         <div>
           <div className="col-span-1 rounded-lg shadow-xl bg-white dark:bg-neutral-800 p-4">
-            <SideBar relatedPost={relatedPost} id={post.id} slug={post.slug} title={title} />
+            <SideBar
+              relatedPost={relatedPost}
+              id={post.id}
+              slug={post.slug}
+              title={title}
+            />
           </div>
         </div>
       </div>
