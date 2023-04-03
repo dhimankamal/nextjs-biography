@@ -13,13 +13,13 @@ export default function App({ Component, pageProps }: AppProps) {
     <>
       <GoogleAnalytics trackPageViews />
       <DefaultSeo
-        title="GossipGeeks - Your Ultimate Source for Celebrity News and Information"
-        description="GossipGeeks is your ultimate source for the latest news and information about your favorite celebrities. Get the latest breaking news, exclusive stories, and behind-the-scenes features about your favorite stars."
+        title={`${process.env.NEXT_PUBLIC_SITE_NAME} - Your Ultimate Source for Celebrity News and Information`}
+        description={`${process.env.NEXT_PUBLIC_SITE_NAME} is your ultimate source for the latest news and information about your favorite celebrities. Get the latest breaking news, exclusive stories, and behind-the-scenes features about your favorite stars.`}
         openGraph={{
           type: "website",
           locale: "en_IE",
-          url: "https://www.gossipgeeks.net/",
-          siteName: "Gossipgeeks",
+          url: process.env.NEXT_PUBLIC_DOMAIN_URL,
+          siteName: process.env.NEXT_PUBLIC_SITE_NAME,
         }}
         // twitter={{
         //   handle: "@handle",
@@ -31,7 +31,7 @@ export default function App({ Component, pageProps }: AppProps) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta
           name="keywords"
-          content="GossipGeeks, celebrity news, entertainment news, celebrity gossip"
+          content={`${process.env.NEXT_PUBLIC_SITE_NAME}, celebrity news, entertainment news, celebrity gossip`}
         />
         <meta name="robots" content="index, follow" />
         <link rel="icon" href="/fevicon.ico" />

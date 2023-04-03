@@ -43,7 +43,7 @@ const Post: NextPage<Props> = ({ post, relatedPost }) => {
   return (
     <>
       <NextSeo
-        title={`${title} | Gossipgeeks`}
+        title={`${title} | ${process.env.NEXT_PUBLIC_SITE_NAME}`}
         description={des}
         canonical={`${process.env.NEXT_PUBLIC_DOMAIN_URL}${post.slug}`}
         openGraph={{
@@ -60,7 +60,7 @@ const Post: NextPage<Props> = ({ post, relatedPost }) => {
             ],
           },
           url: `${process.env.NEXT_PUBLIC_DOMAIN_URL}${post.slug}`,
-          site_name: "Gossip Geeks",
+          site_name: process.env.NEXT_PUBLIC_SITE_NAME,
         }}
       />
       <div
@@ -89,13 +89,13 @@ const Post: NextPage<Props> = ({ post, relatedPost }) => {
             />
             <h2>This article is all about {post.title}</h2>
           </div>
-          <p>
+          {/* <p>
             <b>NOTE:</b> The following article on the {post.title} was
             originally published on starsunfolded.com:{" "}
             <a rel="nofollow" href={`https://starsunfolded.com/${post.slug}`}>
               Visit here original article
             </a>
-          </p>
+          </p> */}
           <div dangerouslySetInnerHTML={{ __html: cleanHtmlString }}></div>
         </div>
         <div>

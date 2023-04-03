@@ -32,8 +32,8 @@ const Home: NextPage<Props> = ({ post }) => {
   return (
     <>
       <NextSeo
-        title="GossipGeeks - Your Ultimate Source for Celebrity News and Information"
-        description="GossipGeeks is your ultimate source for the latest news and information about your favorite celebrities. Get the latest breaking news, exclusive stories, and behind-the-scenes features about your favorite stars."
+        title={`${process.env.NEXT_PUBLIC_SITE_NAME} - Your Ultimate Source for Celebrity News and Information`}
+        description={`${process.env.NEXT_PUBLIC_SITE_NAME} is your ultimate source for the latest news and information about your favorite celebrities. Get the latest breaking news, exclusive stories, and behind-the-scenes features about your favorite stars.`}
         canonical={`${process.env.NEXT_PUBLIC_DOMAIN_URL}`}
        
       />

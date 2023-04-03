@@ -111,7 +111,7 @@ const Navbar: NextPage<Props> = ({}) => {
           >
             <Logo classes="w-12 md:w-14 fill-neutral-900 dark:fill-white transition-all" />
             <span className="hidden md:block ml-3 text-xl dark:text-white">
-              GossipGeeks
+              {process.env.NEXT_PUBLIC_SITE_NAME}
             </span>
           </Link>
 
