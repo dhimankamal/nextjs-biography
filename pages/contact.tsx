@@ -8,6 +8,7 @@ const Contact: NextPage<Props> = ({}) => {
   return (
     <>
       <NextSeo
+      
         title={`Contact Us - Get In Touch With Our Team Today | ${process.env.NEXT_PUBLIC_SITE_NAME}`}
         description="Get in touch with us! Contact our team for any inquiries, feedback, or assistance. We're always here to help you. Fill out our contact form or reach us through our email and phone number. Let's connect and work together towards your needs."
         canonical={`${process.env.NEXT_PUBLIC_DOMAIN_URL}contact`}
