@@ -16,7 +16,7 @@ const PrivacyPolicy: NextPage<Props> = ({}) => {
         <Breadcrumb
           crumbs={[
             { name: "Home", href: "/" },
-            { name: `Privacy Policy for ${process.env.NEXT_PUBLIC_SITE_NAME}`, href: "/privacy-policy" },
+            { name: `Privacy Policy for ${process.env.NEXT_PUBLIC_SITE_NAME} test`, href: "/privacy-policy" },
           ]}
         />
 
