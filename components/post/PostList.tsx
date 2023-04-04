@@ -8,9 +8,10 @@ import SocialShare from "../SocialShare";
 
 interface Props {
   data: Post & { categories: number[] };
+  type:string
 }
 
-const PostList: NextPage<Props> = ({ data }) => {
+const PostList: NextPage<Props> = ({ data,type }) => {
   const categoryName = categoryList.find(
     value => data.categories[0] === value.categorieid
   );
@@ -49,7 +50,7 @@ const PostList: NextPage<Props> = ({ data }) => {
 
           <div className="flex flex-col items-start md:flex-row md:items-center justify-between mt-4 gap-4">
             <Link
-              href={`/${data.slug}`}
+              href={type === "hollywood"?`/hollywood/${data.slug}`:`/${data.slug}`}
               className="text-cyan-500 inline-flex items-center "
             >
               Learn More

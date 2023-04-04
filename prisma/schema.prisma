@@ -35,3 +35,19 @@ model Tags {
   name  String
   slug  String
 }
+
+
+model Hollywood {
+  id             String  @id @default(cuid())
+  postid         String  @unique
+  date           String
+  slug           String  @unique
+  title          String
+  content        Json
+  excerpt        Json
+  categories     Json
+  tags           Json
+  featured_media Int?
+  imageUrl       String?
+  imagesUpdated  Boolean @default(false)
+}
