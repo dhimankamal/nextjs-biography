@@ -35,15 +35,15 @@ const Hollywood: NextPage<Props> = ({ post }) => {
         title="GossipGeeks - Your Ultimate Source for Celebrity News and Information"
         description="GossipGeeks is your ultimate source for the latest news and information about your favorite celebrities. Get the latest breaking news, exclusive stories, and behind-the-scenes features about your favorite stars."
         canonical={`${process.env.NEXT_PUBLIC_DOMAIN_URL}/hollywood`}
-       
       />
-       <div className="container mx-auto text-center space-y-4 px-2">
+      <div className="container mx-auto text-center space-y-4 px-2">
         <Breadcrumb
           crumbs={[
             { name: "Home", href: "/" },
             { name: "Hollywood", href: "/hollywood" },
           ]}
-        /></div>
+        />
+      </div>
 
       <section className="text-gray-600 body-font overflow-hidden">
         <div className="container px-5 py-2 lg:py-12 mx-auto">
@@ -81,6 +81,7 @@ export const getStaticProps: GetStaticProps = async () => {
   }
   return {
     props: { post },
+    revalidate: 10,
   };
 };
 
