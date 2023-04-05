@@ -6,6 +6,7 @@ import InfiniteScroll from "react-infinite-scroll-component";
 import axios from "axios";
 import { NextSeo } from "next-seo";
 import { Hollywood } from "@prisma/client";
+import Breadcrumb from "@/components/Breadcrumb";
 interface Props {
   post: Hollywood[];
 }
@@ -19,7 +20,7 @@ const Hollywood: NextPage<Props> = ({ post }) => {
     setPage(page + 1);
     const res = await axios({
       method: "GET",
-      url: `/api/post/getpost?page=${page}`,
+      url: `/api/hollywood/getpost?page=${page}`,
     });
     if (res.data && res.data.length > 0) {
       setItems([...items, ...res.data]);
@@ -36,6 +37,13 @@ const Hollywood: NextPage<Props> = ({ post }) => {
         canonical={`${process.env.NEXT_PUBLIC_DOMAIN_URL}/hollywood`}
        
       />
+       <div className="container mx-auto text-center space-y-4 px-2">
+        <Breadcrumb
+          crumbs={[
+            { name: "Home", href: "/" },
+            { name: "Hollywood", href: "/hollywood" },
+          ]}
+        /></div>
 
       <section className="text-gray-600 body-font overflow-hidden">
         <div className="container px-5 py-2 lg:py-12 mx-auto">

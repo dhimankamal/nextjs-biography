@@ -45,7 +45,7 @@ const Post: NextPage<Props> = ({ post, relatedPost }) => {
       <NextSeo
         title={`${title} | Gossipgeeks`}
         description={des}
-        canonical={`${process.env.NEXT_PUBLIC_DOMAIN_URL}${post.slug}`}
+        canonical={`${process.env.NEXT_PUBLIC_DOMAIN_URL}hollywood/${post.slug}`}
         openGraph={{
           type: "article",
           article: {
@@ -79,7 +79,7 @@ const Post: NextPage<Props> = ({ post, relatedPost }) => {
         <meta itemProp="image" content={post?.imageUrl || ""} />
 
         <div className="post lg:col-span-2 rounded-lg p-2 md:p-4 lg:p-10 shadow-xl bg-white dark:bg-neutral-800 overflow-hidden">
-          <div className="flex flex-col text-left bg-neutral-100 dark:bg-neutral-900 rounded-lg py-2 px-4 items-center jus gap-4">
+          <div className="flex flex-col bg-neutral-100 dark:bg-neutral-900 rounded-lg py-2 px-4 items-center jus gap-4">
             <div className="w-full h-96 relative">
               <Image
                 className="!rounded-md w-full h-full"
@@ -93,9 +93,9 @@ const Post: NextPage<Props> = ({ post, relatedPost }) => {
           </div>
           <p>
             <b>NOTE:</b> The following article on the {post.title} was
-            originally published on wikibio.us
+            originally published on wikibio.us &nbsp;
             <a rel="nofollow" href={`https://www.wikibio.us/${post.slug}`}>
-              Visit here original article
+               Visit here original article
             </a>
           </p>
           <div dangerouslySetInnerHTML={{ __html: cleanHtmlString }}></div>

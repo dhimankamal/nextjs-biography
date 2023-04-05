@@ -24,7 +24,7 @@ const Category: NextPage<Props> = ({ category, posts }) => {
         {posts.map((data: any) => {
           return (
             <div key={data.id} className="border-b dark:border-gray-800">
-              <PostList data={data} />
+              <PostList data={data} type="category" />
             </div>
           );
         })}
