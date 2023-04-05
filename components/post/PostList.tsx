@@ -67,7 +67,7 @@ const PostList: NextPage<Props> = ({ data,type }) => {
                 <path d="M12 5l7 7-7 7" />
               </svg>
             </Link>
-            <SocialShare slug={data.slug} title={data?.title} />
+            <SocialShare slug={type === "hollywood"?`hollywood/${data.slug}`:`${data.slug}`} title={data?.title} />
           </div>
         </div>
       </div>
