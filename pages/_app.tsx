@@ -11,6 +11,12 @@ import Script from "next/script";
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <>
+      <Script
+        id="adsbygoogle-init"
+        strategy="afterInteractive"
+        crossOrigin="anonymous"
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2446438232158113"
+      />
       <GoogleAnalytics trackPageViews />
       <DefaultSeo
         title="GossipGeeks - Your Ultimate Source for Celebrity News and Information"
