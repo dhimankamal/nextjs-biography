@@ -9,7 +9,7 @@ import { NextSeo } from "next-seo";
 import Image from "next/image";
 
 interface Props {
-  post: Hollywood;
+  post: Hollywood & { ai: { data: string } };
   relatedPost: Hollywood[];
 }
 
@@ -39,7 +39,7 @@ const Post: NextPage<Props> = ({ post, relatedPost }) => {
 
     setCleanHtmlString(doc.documentElement.outerHTML);
   }, [htmlString]);
-
+  console.log("post", post);
   return (
     <>
       <NextSeo
@@ -72,6 +72,7 @@ const Post: NextPage<Props> = ({ post, relatedPost }) => {
           <Breadcrumb
             crumbs={[
               { name: "Home", href: "/" },
+              { name: "Hollywood", href: "/hollywood" },
               { name: post.title, href: post.slug },
             ]}
           />
@@ -80,10 +81,11 @@ const Post: NextPage<Props> = ({ post, relatedPost }) => {
 
         <div className="post lg:col-span-2 rounded-lg p-2 md:p-4 lg:p-10 shadow-xl bg-white dark:bg-neutral-800 overflow-hidden">
           <div className="flex flex-col bg-neutral-100 dark:bg-neutral-900 rounded-lg py-2 px-4 items-center jus gap-4">
-            <div className="w-full h-96 relative">
+            <div className="w-full">
               <Image
-                className="!rounded-md w-full h-full"
-                fill
+                className="!rounded-md"
+                width={800}
+                height={600}
                 alt={post.title}
                 src={post?.imageUrl || ""}
               />
@@ -91,11 +93,14 @@ const Post: NextPage<Props> = ({ post, relatedPost }) => {
 
             <h2>This article is all about {post.title}</h2>
           </div>
+          <div>
+            <p>{post?.ai?.data || ""}</p>
+          </div>
           <p>
             <b>NOTE:</b> The following article on the {post.title} was
             originally published on wikibio.us &nbsp;
             <a rel="nofollow" href={`https://www.wikibio.us/${post.slug}`}>
-               Visit here original article
+              Visit here original article
             </a>
           </p>
           <div dangerouslySetInnerHTML={{ __html: cleanHtmlString }}></div>
@@ -118,7 +123,7 @@ const Post: NextPage<Props> = ({ post, relatedPost }) => {
 export const getStaticPaths: GetStaticPaths = async () => {
   const post: Post[] = await prisma.hollywood.findMany();
   const paths = post.map(element => `/hollywood/${element.slug}`);
-  return { paths, fallback: 'blocking' };
+  return { paths, fallback: "blocking" };
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
@@ -143,7 +148,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       post,
       relatedPost,
     },
-    revalidate:10
+    revalidate: 10,
   };
 };
 

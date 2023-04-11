@@ -20,6 +20,7 @@ model Post {
   featured_media Int?
   imageUrl       String?
   imagesUpdated  Boolean @default(false)
+  ai             Json?
 }
 
 model Categories {
@@ -50,4 +51,5 @@ model Hollywood {
   featured_media Int?
   imageUrl       String?
   imagesUpdated  Boolean @default(false)
+  ai             Json?
 }
