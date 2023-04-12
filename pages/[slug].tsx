@@ -7,6 +7,7 @@ import SideBar from "@/components/post/SideBar";
 // import Head from "next/head";
 import { NextSeo } from "next-seo";
 import Image from "next/image";
+import HorizontalAd from "@/components/ads/HorizontalAd";
 
 interface Props {
   post: Post;
@@ -76,6 +77,7 @@ const Post: NextPage<Props> = ({ post, relatedPost }) => {
             ]}
           />
         </div>
+        <HorizontalAd />
         <meta itemProp="image" content={post?.imageUrl || ""} />
 
         <div className="post lg:col-span-2 rounded-lg p-2 md:p-4 lg:p-10 shadow-xl bg-white dark:bg-neutral-800 overflow-hidden">
