@@ -7,8 +7,10 @@ import NextNProgress from "nextjs-progressbar";
 import { GoogleAnalytics } from "nextjs-google-analytics";
 import { DefaultSeo } from "next-seo";
 import Script from "next/script";
+import { useRouter } from "next/router";
 
 export default function App({ Component, pageProps }: AppProps) {
+  const router = useRouter();
   return (
     <>
       <Script
@@ -43,14 +45,18 @@ export default function App({ Component, pageProps }: AppProps) {
         <link rel="icon" href="/fevicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
-      <div className="min-h-screen flex flex-col">
-        <NextNProgress color="#06b6d4" />
-        <Navbar />
-        <main className="flex-grow">
-          <Component {...pageProps} />
-        </main>
-        <Footer />
-      </div>
+      {router.pathname === "/webstory/[webstory]" ? (
+        <Component {...pageProps} />
+      ) : (
+        <div className="min-h-screen flex flex-col">
+          <NextNProgress color="#06b6d4" />
+          <Navbar />
+          <main className="flex-grow">
+            <Component {...pageProps} />
+          </main>
+          <Footer />
+        </div>
+      )}
     </>
   );
 }

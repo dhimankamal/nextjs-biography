@@ -77,7 +77,7 @@ const Post: NextPage<Props> = ({ post, relatedPost }) => {
             ]}
           />
         </div>
-        <HorizontalAd />
+        {/* <HorizontalAd /> */}
         <meta itemProp="image" content={post?.imageUrl || ""} />
 
         <div className="post lg:col-span-2 rounded-lg p-2 md:p-4 lg:p-10 shadow-xl bg-white dark:bg-neutral-800 overflow-hidden">
