@@ -45,8 +45,9 @@ export default function App({ Component, pageProps }: AppProps) {
         <link rel="icon" href="/fevicon.ico" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
       </Head>
-      {router.pathname === "/webstory/[webstory]" ? (
+      {router.pathname.match("/webstory") ? (
         <Component {...pageProps} />
+       
       ) : (
         <div className="min-h-screen flex flex-col">
           <NextNProgress color="#06b6d4" />

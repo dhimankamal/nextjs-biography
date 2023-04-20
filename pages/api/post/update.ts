@@ -33,7 +33,7 @@ const getPostData = async (page: number) => {
 const updatePostData = async () => {
   try {
     let updateData: any[] = [];
-    for (let index = 1; index < 3; index++) {
+    for (let index = 1; index < 7; index++) {
       const data = await getPostData(index);
       if (data.length) {
         updateData = [...updateData, ...data];

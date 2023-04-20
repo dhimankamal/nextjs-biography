@@ -13,9 +13,7 @@ const WebStory: NextPage<Props> = ({ data }) => {
   return (
     <>
       <Head>
-        <title>
-          {data?.title  + process.env.NEXT_PUBLIC_SITE_NAME}
-        </title>
+        <title>{data?.title + process.env.NEXT_PUBLIC_SITE_NAME}</title>
         <script async src="https://cdn.ampproject.org/v0.js"></script>
         <script
           async
@@ -59,6 +57,7 @@ const WebStory: NextPage<Props> = ({ data }) => {
           text-decoration: none;
         }
       `}</style>
+
       <amp-story
         standalone=""
         title={data?.title}
@@ -83,7 +82,9 @@ const WebStory: NextPage<Props> = ({ data }) => {
         <amp-story-page id="download">
           <amp-story-grid-layer template="vertical">
             <h2 className="title">Read More</h2>
-            <a href={`${process.env.NEXT_PUBLIC_DOMAIN_URL}${data?.slug}`}>Read now</a>
+            <a href={`${process.env.NEXT_PUBLIC_DOMAIN_URL}${data?.slug}`}>
+              Read now
+            </a>
           </amp-story-grid-layer>
         </amp-story-page>
       </amp-story>
