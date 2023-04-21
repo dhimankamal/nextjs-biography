@@ -118,7 +118,7 @@ const Post: NextPage<Props> = ({ post, relatedPost }) => {
 export const getStaticPaths: GetStaticPaths = async () => {
   const post: Post[] = await prisma.post.findMany();
   const paths = post.map(element => `/${element.slug}`);
-  return { paths, fallback: false };
+  return { paths, fallback: "blocking" };
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
@@ -143,6 +143,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       post,
       relatedPost,
     },
+    revalidate:100
   };
 };
 

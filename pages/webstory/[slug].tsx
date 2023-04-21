@@ -29,11 +29,25 @@ const WebStory: NextPage<Props> = ({ data }) => {
       </Head>
       <style jsx global>{`
         /* Global styles */
+        amp-story {
+          font-family: "Fira Code", monospace;
+        }
+        amp-story-grid-layer {
+          padding: 0;
+          margin: 0;
+        }
         .title {
-          font-size: 2em;
-          text-align: center;
-          margin: 1em 0;
+          background-color: rgba(0, 0, 0, 0.8);
+          padding: 10px 20px;
           color: white;
+          margin: 0 auto;
+          width: 60%;
+          border-radius: 0 10px 10px 0;
+          font-size: 1rem;
+          text-align: left;
+          z-index: 1;
+          position: absolute;
+          bottom: 60px;
         }
 
         /* Cover page styles */
@@ -46,6 +60,19 @@ const WebStory: NextPage<Props> = ({ data }) => {
           background-color: #000;
         }
 
+        .visit-box{
+          z-index: 1;
+          background-color: rgba(255, 255, 255,0.8);
+          padding: 20px;
+          height: 100vh;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          justify-content: center;
+          text-align: center;
+          
+        }
+
         amp-story-page#download a {
           font-size: 1.5em;
           text-align: center;
@@ -55,6 +82,17 @@ const WebStory: NextPage<Props> = ({ data }) => {
           background-color: #333;
           color: white;
           text-decoration: none;
+          z-index: 1;
+        }
+        amp-img {
+          position: absolute;
+        }
+        img {
+          object-fit: cover !important;
+          filter: brightness(0.5);
+        }
+        .blur img{
+          filter: blur(10px) !important;
         }
       `}</style>
 
@@ -72,19 +110,25 @@ const WebStory: NextPage<Props> = ({ data }) => {
           <amp-story-grid-layer template="vertical">
             <amp-img
               src={data?.imageUrl || "./logo.svg"}
-              width="200"
-              height="300"
-              layout="responsive"
+              layout="fill"
             ></amp-img>
             <h1 className="title">{data?.title}</h1>
           </amp-story-grid-layer>
         </amp-story-page>
         <amp-story-page id="download">
           <amp-story-grid-layer template="vertical">
-            <h2 className="title">Read More</h2>
-            <a href={`${process.env.NEXT_PUBLIC_DOMAIN_URL}${data?.slug}`}>
-              Read now
-            </a>
+            <amp-img
+              src={data?.imageUrl || "./logo.svg"}
+              layout="fill"
+              className="blur"
+            ></amp-img>
+
+            <div className="visit-box">
+              <h2>{data?.title}</h2>
+              <a href={`${process.env.NEXT_PUBLIC_DOMAIN_URL}${data?.slug}`}>
+                Read now
+              </a>
+            </div>
           </amp-story-grid-layer>
         </amp-story-page>
       </amp-story>
@@ -95,7 +139,7 @@ const WebStory: NextPage<Props> = ({ data }) => {
 export const getStaticPaths: GetStaticPaths = async () => {
   const data: Post[] = await prisma.post.findMany();
   const paths = data.map(element => `/webstory/${element.slug}`);
-  return { paths, fallback: false };
+  return { paths, fallback: "blocking" };
 };
 
 export const getStaticProps: GetStaticProps = async ({ params }) => {
@@ -108,6 +152,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     props: {
       data,
     },
+    revalidate:100
   };
 };
 
