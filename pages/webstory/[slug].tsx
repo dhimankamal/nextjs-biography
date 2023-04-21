@@ -88,11 +88,11 @@ const WebStory: NextPage<Props> = ({ data }) => {
           position: absolute;
         }
         img {
-          object-fit: cover !important;
+          object-fit: cover;
           filter: brightness(0.5);
         }
         .blur img{
-          filter: blur(10px) !important;
+          filter: blur(10px);
         }
       `}</style>
 
