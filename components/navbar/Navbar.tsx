@@ -6,6 +6,7 @@ import ThemeToggel from "./ThemeToggel";
 import { useRouter } from "next/router";
 import { Logo, SearchIcon } from "../icon";
 import Search from "./Search";
+import Dropdown from "./Dropdown";
 
 interface Props {}
 
@@ -62,24 +63,35 @@ const Navbar: NextPage<Props> = ({}) => {
       href: "/",
     },
     {
-      name: "Hollywood",
-      href: "/hollywood",
-    },
-    {
       name: "Category",
       href: "/category",
+      options: [
+        {
+          name: "Hollywood",
+          href: "/hollywood",
+        },
+        {
+          name: "Bollywood",
+          href: "/category/bollywood",
+        },
+
+       
+      ],
     },
     {
-      name: "About",
-      href: "/about",
-    },
-    {
-      name: "Disclaimer",
-      href: "/disclaimer",
-    },
-    {
-      name: "Privacy Policy",
-      href: "/privacy-policy",
+      name: "Pages",
+      href: "/",
+      options: [
+        { name: "About us", href: "/about" },
+        {
+          name: "Disclaimer",
+          href: "/disclaimer",
+        },
+        {
+          name: "Privacy Policy",
+          href: "/privacy-policy",
+        },
+      ],
     },
 
     {
@@ -94,17 +106,22 @@ const Navbar: NextPage<Props> = ({}) => {
           <nav className="hidden lg:flex items-center justify-center text-base w-full">
             {navLinks.map(val => {
               return (
-                <Link
-                  key={val?.name}
-                  href={val?.href}
-                  className={`mr-5 last:mr-0 cursor-pointer hover:text-gray-900 dark:hover:text-white transition-all duration-200 ${
-                    router.pathname === val.href
-                      ? "border-b border-cyan-500"
-                      : ""
-                  }`}
-                >
-                  {val?.name}
-                </Link>
+                <div key={val?.name} className="mr-5">
+                  {val?.options ? (
+                    <Dropdown data={val} />
+                  ) : (
+                    <Link
+                      href={val?.href}
+                      className={` last:mr-0 cursor-pointer hover:text-gray-900 dark:hover:text-white transition-all duration-200 ${
+                        router.pathname === val.href
+                          ? "border-b border-cyan-500"
+                          : ""
+                      }`}
+                    >
+                      {val?.name}
+                    </Link>
+                  )}
+                </div>
               );
             })}
           </nav>
@@ -120,7 +137,10 @@ const Navbar: NextPage<Props> = ({}) => {
           </Link>
 
           <div className="flex items-center gap-2 lg:flex lg:items-center lg:justify-end">
-            <button onClick={() => setShowSeach(!showSeach)} aria-label="Search">
+            <button
+              onClick={() => setShowSeach(!showSeach)}
+              aria-label="Search"
+            >
               <SearchIcon classes="w-6 h-full fill-neutral-900 dark:fill-white " />
             </button>
             <ThemeToggel theme={theme} toggleTheme={toggleTheme} />
