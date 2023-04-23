@@ -1,7 +1,7 @@
 import { Post } from "@prisma/client";
 import { GetStaticPaths, GetStaticProps, NextPage } from "next";
 import { prisma } from "@/lib/db";
-import Head from "next/head";
+import { NextSeo } from "next-seo";
 
 interface Props {
   data: Post;
@@ -10,23 +10,36 @@ interface Props {
 export const config = { amp: true };
 
 const WebStory: NextPage<Props> = ({ data }) => {
+  const des = String(data.excerpt)
+  .replace("[&hellip;]", "")
+  .replace("<p>", "")
+  .replace("</p>", "");
+  const title = data.title.replace("&amp;", "&");
   return (
     <>
-      <Head>
-        <title>{data?.title + process.env.NEXT_PUBLIC_SITE_NAME}</title>
-        <script async src="https://cdn.ampproject.org/v0.js"></script>
-        <script
-          async
-          key="amp-story"
-          custom-element="amp-story"
-          src="https://cdn.ampproject.org/v0/amp-story-1.0.js"
-        />
-        <script
-          async
-          custom-element="amp-video"
-          src="https://cdn.ampproject.org/v0/amp-video-0.1.js"
-        />
-      </Head>
+      <NextSeo
+        title={`${title} | Gossipgeeks`}
+        description={des}
+        canonical={`${process.env.NEXT_PUBLIC_DOMAIN_URL}webstory/${data.slug}`}
+        openGraph={{
+          title:title,
+          description:des,
+          type: "NewsArticle",
+          article: {
+            publishedTime: data?.date,
+            modifiedTime: data?.date,
+            authors: ["https://in.pinterest.com/gossipgeeks"],
+            tags: [
+              "Biography",
+              "Celebrity news",
+              "bollywood celebrity news",
+              "celebrity news today",
+            ],
+          },
+          url: `${process.env.NEXT_PUBLIC_DOMAIN_URL}${data.slug}`,
+          site_name: "Gossip Geeks",
+        }}
+      />
       <style jsx global>{`
         /* Global styles */
         amp-story {
@@ -94,11 +107,15 @@ const WebStory: NextPage<Props> = ({ data }) => {
         .blur img{
           filter: blur(10px);
         }
+        .visit-box h2{
+          font-size:1rem;
+          font-weight:400;
+        }
       `}</style>
 
       <amp-story
         standalone=""
-        title={data?.title}
+        title={title}
         publisher="GossipGeeks"
         publisher-logo-src="./logo.svg"
         poster-portrait-src={data?.imageUrl || "./logo.svg"}
@@ -112,7 +129,7 @@ const WebStory: NextPage<Props> = ({ data }) => {
               src={data?.imageUrl || "./logo.svg"}
               layout="fill"
             ></amp-img>
-            <h1 className="title">{data?.title}</h1>
+            <h1 className="title">{title}</h1>
           </amp-story-grid-layer>
         </amp-story-page>
         <amp-story-page id="download">
@@ -124,7 +141,7 @@ const WebStory: NextPage<Props> = ({ data }) => {
             ></amp-img>
 
             <div className="visit-box">
-              <h2>{data?.title}</h2>
+              <h2>{des}</h2>
               <a href={`${process.env.NEXT_PUBLIC_DOMAIN_URL}${data?.slug}`}>
                 Read now
               </a>
