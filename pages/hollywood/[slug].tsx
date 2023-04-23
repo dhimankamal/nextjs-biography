@@ -27,7 +27,7 @@ const Post: NextPage<Props> = ({ post, relatedPost }) => {
     const doc = parser.parseFromString(String(htmlString), "text/html");
     const elements = doc.querySelectorAll("[style],img");
 
-    elements.forEach(element => {
+    elements.forEach((element) => {
       if (element.tagName.toLowerCase() === "img") {
         element.removeAttribute("style");
         element.removeAttribute("height");
@@ -122,7 +122,7 @@ const Post: NextPage<Props> = ({ post, relatedPost }) => {
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const post: Post[] = await prisma.hollywood.findMany();
-  const paths = post.map(element => `/hollywood/${element.slug}`);
+  const paths = post.map((element) => `/hollywood/${element.slug}`);
   return { paths, fallback: "blocking" };
 };
 

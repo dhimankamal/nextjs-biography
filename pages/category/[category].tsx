@@ -34,7 +34,7 @@ const Category: NextPage<Props> = ({ category, posts }) => {
 };
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const paths = categoryList.map(element => `/category/${element.slug}`);
+  const paths = categoryList.map((element) => `/category/${element.slug}`);
   return {
     paths,
     fallback: false,
@@ -44,7 +44,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 export const getStaticProps: GetStaticProps = async ({ params }) => {
   let slug: string = String(params?.category) || "";
   const category: Categories | undefined = categoryList.find(
-    val => val.slug === slug
+    (val) => val.slug === slug
   );
   const posts: Post[] | null = await prisma.post.findMany({
     where: {

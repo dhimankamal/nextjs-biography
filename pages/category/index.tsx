@@ -16,7 +16,7 @@ const CategoryPage: NextPage<Props> = ({}) => {
       />
       <div>
         <div className="flex flex-col space-y-4 rounded-lg">
-          {categoryList.map(val => {
+          {categoryList.map((val) => {
             return (
               <Link
                 href={`/category/${val.slug}`}

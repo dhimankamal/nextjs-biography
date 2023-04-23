@@ -1,10 +1,9 @@
-
 ![Logo](https://res.cloudinary.com/djf5aoidz/image/upload/v1680797874/black_png_ydedhq.png)
-
 
 # GossipGeeks 👋
 
 The GossipGeeks project is a web application built using the Next.js framework, TypeScript, Prisma ORM, MySQL database, and Tailwind CSS. The application aims to provide a platform for creating and managing biographical profiles of celebrities.
+
 ## Features
 
 - Create, edit, and delete biographical profiles of celebrities
@@ -20,7 +19,6 @@ The GossipGeeks project is a web application built using the Next.js framework, 
 **Client:** Next.js, TypeScript, Prisma ORM, Tailwind CSS
 
 **Server:** MySQL database, Cloudinary
-
 
 ## Tags
 

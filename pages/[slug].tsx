@@ -28,7 +28,7 @@ const Post: NextPage<Props> = ({ post, relatedPost }) => {
     const doc = parser.parseFromString(String(htmlString), "text/html");
     const elements = doc.querySelectorAll("[style],img");
 
-    elements.forEach(element => {
+    elements.forEach((element) => {
       if (element.tagName.toLowerCase() === "img") {
         element.removeAttribute("style");
         element.removeAttribute("height");
@@ -117,7 +117,7 @@ const Post: NextPage<Props> = ({ post, relatedPost }) => {
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const post: Post[] = await prisma.post.findMany();
-  const paths = post.map(element => `/${element.slug}`);
+  const paths = post.map((element) => `/${element.slug}`);
   return { paths, fallback: "blocking" };
 };
 
@@ -143,7 +143,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
       post,
       relatedPost,
     },
-    revalidate:100
+    revalidate: 100,
   };
 };
 

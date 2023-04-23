@@ -13,7 +13,7 @@ const renderLinks = (quickLinks: Post[]) => {
   }
   return (
     <ul className="space-y-2">
-      {quickLinks?.map(val => (
+      {quickLinks?.map((val) => (
         <li key={val.id} className="">
           <Link
             href={val.slug}
@@ -32,7 +32,7 @@ const skelton = () => {
   const array = [1, 2, 3, 4, 5, 6];
   return (
     <ul className="space-y-2 animate-pulse">
-      {array.map(value => {
+      {array.map((value) => {
         return (
           <li key={value}>
             <div className="lg:w-1/2 bg-neutral-200 h-6 rounded-md"></div>
@@ -123,7 +123,7 @@ const Search: NextPage<Props> = ({}) => {
         <div className="w-full">
           <input
             ref={inputRef}
-            onChange={e => setValue(e.target.value)}
+            onChange={(e) => setValue(e.target.value)}
             type="text"
             className="w-full bg-transparent bg-opacity-50 rounded border  focus:border-cyan-500  focus:ring-2 focus:ring-cyan-200 text-base outline-none dark:text-white py-1 px-3 leading-8 transition-colors duration-200 ease-in-out"
             placeholder="Search here"

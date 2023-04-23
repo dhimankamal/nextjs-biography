@@ -57,16 +57,16 @@ export default async function handler(
 ): Promise<void> {
   let postList = await prisma.hollywood.findMany({
     take: 50,
-    skip:300,
+    skip: 300,
     orderBy: {
       date: "desc",
     },
   });
 
   await Promise.all(
-    postList.map(async (element,idx) => {
+    postList.map(async (element, idx) => {
       if (!element?.ai) {
-        console.log("call",idx)
+        console.log("call", idx);
         const data: string | null = await generateText(
           `here is tittle "${element.title}" write article minimum 500 words max 1000 words for my blog. Here more information "${element.excerpt}"`
         );
@@ -93,6 +93,6 @@ export default async function handler(
     })
   );
 
-  let ai = postList.map(val => val.ai);
+  let ai = postList.map((val) => val.ai);
   res.status(200).json({ data: ai });
 }

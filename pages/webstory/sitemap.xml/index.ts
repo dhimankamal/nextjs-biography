@@ -3,10 +3,10 @@ import { getServerSideSitemapLegacy } from "next-sitemap";
 import { GetServerSideProps } from "next";
 import { prisma } from "@/lib/db";
 
-export const getServerSideProps: GetServerSideProps = async ctx => {
+export const getServerSideProps: GetServerSideProps = async (ctx) => {
   const data: Post[] | undefined = await prisma?.post.findMany();
 
-  const newsSitemaps = data?.map(item => ({
+  const newsSitemaps = data?.map((item) => ({
     loc: `${
       process.env.NEXT_PUBLIC_DOMAIN_URL
     }webstory/${item.slug.toString()}`,

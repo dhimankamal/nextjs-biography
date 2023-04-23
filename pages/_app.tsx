@@ -47,7 +47,6 @@ export default function App({ Component, pageProps }: AppProps) {
       </Head>
       {router.pathname.match("/webstory") ? (
         <Component {...pageProps} />
-       
       ) : (
         <div className="min-h-screen flex flex-col">
           <NextNProgress color="#06b6d4" />

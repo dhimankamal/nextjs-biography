@@ -11,9 +11,9 @@ export const config = { amp: true };
 
 const WebStory: NextPage<Props> = ({ data }) => {
   const des = String(data.excerpt)
-  .replace("[&hellip;]", "")
-  .replace("<p>", "")
-  .replace("</p>", "");
+    .replace("[&hellip;]", "")
+    .replace("<p>", "")
+    .replace("</p>", "");
   const title = data.title.replace("&amp;", "&");
   return (
     <>
@@ -22,8 +22,8 @@ const WebStory: NextPage<Props> = ({ data }) => {
         description={des}
         canonical={`${process.env.NEXT_PUBLIC_DOMAIN_URL}webstory/${data.slug}`}
         openGraph={{
-          title:title,
-          description:des,
+          title: title,
+          description: des,
           type: "NewsArticle",
           article: {
             publishedTime: data?.date,
@@ -73,9 +73,9 @@ const WebStory: NextPage<Props> = ({ data }) => {
           background-color: #000;
         }
 
-        .visit-box{
+        .visit-box {
           z-index: 1;
-          background-color: rgba(255, 255, 255,0.8);
+          background-color: rgba(255, 255, 255, 0.8);
           padding: 20px;
           height: 100vh;
           display: flex;
@@ -83,7 +83,6 @@ const WebStory: NextPage<Props> = ({ data }) => {
           align-items: center;
           justify-content: center;
           text-align: center;
-          
         }
 
         amp-story-page#download a {
@@ -104,12 +103,12 @@ const WebStory: NextPage<Props> = ({ data }) => {
           object-fit: cover;
           filter: brightness(0.5);
         }
-        .blur img{
+        .blur img {
           filter: blur(10px);
         }
-        .visit-box h2{
-          font-size:1rem;
-          font-weight:400;
+        .visit-box h2 {
+          font-size: 1rem;
+          font-weight: 400;
         }
       `}</style>
 
@@ -155,7 +154,7 @@ const WebStory: NextPage<Props> = ({ data }) => {
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const data: Post[] = await prisma.post.findMany();
-  const paths = data.map(element => `/webstory/${element.slug}`);
+  const paths = data.map((element) => `/webstory/${element.slug}`);
   return { paths, fallback: "blocking" };
 };
 
@@ -169,7 +168,7 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
     props: {
       data,
     },
-    revalidate:100
+    revalidate: 100,
   };
 };
 

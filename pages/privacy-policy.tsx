@@ -54,7 +54,10 @@ const PrivacyPolicy: NextPage<Props> = ({}) => {
             other sites on the Internet. Users may opt out of the use of the
             DART cookie by visiting the Google ad and content network privacy
             policy at the following URL -
-            <a className="break-all" href="http://www.google.com/privacy_ads.html">
+            <a
+              className="break-all"
+              href="http://www.google.com/privacy_ads.html"
+            >
               http://www.google.com/privacy_ads.html
             </a>
             .

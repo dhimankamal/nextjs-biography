@@ -8,12 +8,12 @@ import SocialShare from "../SocialShare";
 
 interface Props {
   data: Post & { categories: number[] };
-  type:string
+  type: string;
 }
 
-const PostList: NextPage<Props> = ({ data,type }) => {
+const PostList: NextPage<Props> = ({ data, type }) => {
   const categoryName = categoryList.find(
-    value => data.categories[0] === value.categorieid
+    (value) => data.categories[0] === value.categorieid
   );
   const des = String(data.excerpt).replace("[&hellip;]", "");
   return (
@@ -50,7 +50,11 @@ const PostList: NextPage<Props> = ({ data,type }) => {
 
           <div className="flex flex-col items-start md:flex-row md:items-center justify-between mt-4 gap-4">
             <Link
-              href={type === "hollywood"?`/hollywood/${data.slug}`:`/${data.slug}`}
+              href={
+                type === "hollywood"
+                  ? `/hollywood/${data.slug}`
+                  : `/${data.slug}`
+              }
               className="text-cyan-500 inline-flex items-center "
             >
               Learn More
@@ -67,7 +71,12 @@ const PostList: NextPage<Props> = ({ data,type }) => {
                 <path d="M12 5l7 7-7 7" />
               </svg>
             </Link>
-            <SocialShare slug={type === "hollywood"?`hollywood/${data.slug}`:`${data.slug}`} title={data?.title} />
+            <SocialShare
+              slug={
+                type === "hollywood" ? `hollywood/${data.slug}` : `${data.slug}`
+              }
+              title={data?.title}
+            />
           </div>
         </div>
       </div>

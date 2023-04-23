@@ -9,7 +9,8 @@ const Breadcrumb: NextPage<Props> = ({ crumbs }) => {
   return (
     <div className="text-center">
       <div className="p-8 lg:p-20 bg-white rounded-2xl dark:bg-neutral-800">
-        <h1 itemProp="headline"
+        <h1
+          itemProp="headline"
           className="text-2xl lg:text-5xl font-bold text-center mb-4"
           dangerouslySetInnerHTML={{ __html: crumbs.at(-1)?.name || "" }}
         ></h1>

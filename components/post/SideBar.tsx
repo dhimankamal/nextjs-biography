@@ -24,7 +24,7 @@ const SideBar: NextPage<Props> = ({ relatedPost, id, slug, title }) => {
       <div className="mb-4">
         <h3 className="text-2xl font-bold mb-4">Category</h3>
         <div className="flex flex-col space-y-4 rounded-lg">
-          {categoryList.map(val => {
+          {categoryList.map((val) => {
             return (
               <Link
                 href={`/category/${val.slug}`}
@@ -40,7 +40,7 @@ const SideBar: NextPage<Props> = ({ relatedPost, id, slug, title }) => {
       <div>
         <h3 className="text-2xl font-bold mb-4">Related Posts</h3>
         <div className="space-y-4">
-          {relatedPost.map(val => {
+          {relatedPost.map((val) => {
             if (val.id === id) {
               return null;
             } else {

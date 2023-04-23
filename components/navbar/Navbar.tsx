@@ -74,8 +74,6 @@ const Navbar: NextPage<Props> = ({}) => {
           name: "Bollywood",
           href: "/category/bollywood",
         },
-
-       
       ],
     },
     {
@@ -104,7 +102,7 @@ const Navbar: NextPage<Props> = ({}) => {
       <header className="text-gray-600 z-50  dark:text-gray-300 body-font sticky top-0 bg-neutral-100/80 dark:bg-neutral-900/80 transition-all duration-500 backdrop-blur-xl">
         <div className="container mx-auto flex lg:px-2 lg:py-2 flex-row items-center justify-between gap-2 z-10">
           <nav className="hidden lg:flex items-center justify-center text-base w-full">
-            {navLinks.map(val => {
+            {navLinks.map((val) => {
               return (
                 <div key={val?.name} className="mr-5">
                   {val?.options ? (
@@ -153,7 +151,7 @@ const Navbar: NextPage<Props> = ({}) => {
       </header>
       {isActive && (
         <div className="fixed z-10 bg-neutral-100 top-0 h-screen dark:bg-neutral-900 w-full flex flex-col items-center justify-center gap-10">
-          {navLinks.map(val => {
+          {navLinks.map((val) => {
             return (
               <Link
                 key={val.name}
