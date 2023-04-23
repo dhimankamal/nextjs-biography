@@ -7,7 +7,7 @@ import SideBar from "@/components/post/SideBar";
 // import Head from "next/head";
 import { NextSeo } from "next-seo";
 import Image from "next/image";
-import HorizontalAd from "@/components/ads/HorizontalAd";
+import ReactHtmlParser from "react-html-parser";
 
 interface Props {
   post: Post;
@@ -28,7 +28,7 @@ const Post: NextPage<Props> = ({ post, relatedPost }) => {
     const doc = parser.parseFromString(String(htmlString), "text/html");
     const elements = doc.querySelectorAll("[style],img");
 
-    elements.forEach((element) => {
+    elements.forEach(element => {
       if (element.tagName.toLowerCase() === "img") {
         element.removeAttribute("style");
         element.removeAttribute("height");
@@ -93,12 +93,13 @@ const Post: NextPage<Props> = ({ post, relatedPost }) => {
           </div>
           <p>
             <b>NOTE:</b> The following article on the {post.title} was
-            originally published on starsunfolded.com:{" "}
-            <a rel="nofollow" href={`https://starsunfolded.com/${post.slug}`}>
-              Visit here original article
-            </a>
+            originally published on starsunfolded.com
           </p>
-          <div dangerouslySetInnerHTML={{ __html: cleanHtmlString }}></div>
+          <div>
+            {ReactHtmlParser(
+              cleanHtmlString.replaceAll(/<\/?html>|<\/?head>|<\/?body>/g, "")
+            )}
+          </div>
         </div>
         <div>
           <div className="col-span-1 rounded-lg shadow-xl bg-white dark:bg-neutral-800 p-4">
@@ -117,7 +118,7 @@ const Post: NextPage<Props> = ({ post, relatedPost }) => {
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const post: Post[] = await prisma.post.findMany();
-  const paths = post.map((element) => `/${element.slug}`);
+  const paths = post.map(element => `/${element.slug}`);
   return { paths, fallback: "blocking" };
 };
 
