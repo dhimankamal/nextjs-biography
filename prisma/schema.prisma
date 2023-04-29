@@ -53,3 +53,11 @@ model Hollywood {
   imagesUpdated  Boolean @default(false)
   ai             Json?
 }
+
+model User {
+  id       String @id @default(cuid())
+  name     String
+  password String
+  email    String @unique
+  role     String
+}

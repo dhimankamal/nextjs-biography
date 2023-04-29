@@ -8,6 +8,9 @@ import { GoogleAnalytics } from "nextjs-google-analytics";
 import { DefaultSeo } from "next-seo";
 import Script from "next/script";
 import { useRouter } from "next/router";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+
 
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
@@ -57,6 +60,19 @@ export default function App({ Component, pageProps }: AppProps) {
           <Footer />
         </div>
       )}
+
+      <ToastContainer
+        position="bottom-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+      />
     </>
   );
 }
