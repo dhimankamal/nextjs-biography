@@ -11,7 +11,6 @@ import { useRouter } from "next/router";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
-
 export default function App({ Component, pageProps }: AppProps) {
   const router = useRouter();
   return (
@@ -51,28 +50,29 @@ export default function App({ Component, pageProps }: AppProps) {
       {router.pathname.match("/webstory") ? (
         <Component {...pageProps} />
       ) : (
-        <div className="min-h-screen flex flex-col">
-          <NextNProgress color="#06b6d4" />
-          <Navbar />
-          <main className="flex-grow">
-            <Component {...pageProps} />
-          </main>
-          <Footer />
-        </div>
+        <>
+          <div className="min-h-screen flex flex-col">
+            <NextNProgress color="#06b6d4" />
+            <Navbar />
+            <main className="flex-grow">
+              <Component {...pageProps} />
+            </main>
+            <Footer />
+          </div>
+          <ToastContainer
+            position="bottom-right"
+            autoClose={5000}
+            hideProgressBar={false}
+            newestOnTop={false}
+            closeOnClick
+            rtl={false}
+            pauseOnFocusLoss
+            draggable
+            pauseOnHover
+            theme="light"
+          />
+        </>
       )}
-
-      <ToastContainer
-        position="bottom-right"
-        autoClose={5000}
-        hideProgressBar={false}
-        newestOnTop={false}
-        closeOnClick
-        rtl={false}
-        pauseOnFocusLoss
-        draggable
-        pauseOnHover
-        theme="light"
-      />
     </>
   );
 }
