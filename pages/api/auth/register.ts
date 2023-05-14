@@ -3,7 +3,7 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { prisma } from "@/lib/db";
 
-const JWT_SECRET = "test";
+const JWT_SECRET = process.env.JWT_SECRET;
 
 const register: NextApiHandler = async (req, res) => {
   if (req.method !== "POST") {
@@ -23,7 +23,7 @@ const register: NextApiHandler = async (req, res) => {
         role:"auther"
       },
     });
-    const token = jwt.sign({ userId: user.id }, JWT_SECRET);
+    const token = jwt.sign({ userId: user.id }, JWT_SECRET || "");
     res.status(200).json({ token });
   } catch (err:any) {
     res.status(400).json({ message: err.message });

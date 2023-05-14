@@ -3,7 +3,7 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { prisma } from "@/lib/db";
 
-const JWT_SECRET = "test";
+const JWT_SECRET = process.env.JWT_SECRET;
 
 export const loginUser = async (
   email: string,
@@ -17,7 +17,7 @@ export const loginUser = async (
   if (!passwordMatch) {
     throw new Error("Invalid email or password");
   }
-  const token = jwt.sign({ userId: user.id }, JWT_SECRET);
+  const token = jwt.sign({ userId: user.id }, JWT_SECRET || '');
   return token;
 };
 

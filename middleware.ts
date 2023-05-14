@@ -10,6 +10,7 @@ export function middleware(request: NextRequest) {
   }
   if (request.nextUrl.pathname.startsWith("/auth")) {
     if (token) {
+      
       return NextResponse.redirect(new URL("/dashboard", request.url));
     }
   }
