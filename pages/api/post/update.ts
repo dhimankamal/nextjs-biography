@@ -19,7 +19,7 @@ const getPostData = async (page: number) => {
   try {
     const res = await axios({
       method: "GET",
-      url: `${baseUrl}/wp/v2/posts?per_page=5&page=${page}`,
+      url: `${baseUrl}/wp/v2/posts?per_page=2&page=${page}`,
     });
 
     if (res && res.data) {
