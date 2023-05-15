@@ -19,7 +19,7 @@ const getPostData = async (page: number) => {
   try {
     const res = await axios({
       method: "GET",
-      url: `${baseUrl}/wp/v2/posts?per_page=10&page=${page}`,
+      url: `${baseUrl}/wp/v2/posts?per_page=5&page=${page}`,
     });
 
     if (res && res.data) {
@@ -33,7 +33,7 @@ const getPostData = async (page: number) => {
 const updatePostData = async () => {
   try {
     let updateData: any[] = [];
-    for (let index = 1; index < 3; index++) {
+    for (let index = 1; index < 2; index++) {
       const data = await getPostData(index);
       if (data.length) {
         updateData = [...updateData, ...data];
