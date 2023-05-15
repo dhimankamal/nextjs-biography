@@ -9,7 +9,7 @@ export default function Profile(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
-  const token = req.headers.get("Authorization");
-  console.log("token>>>", token);
+  // const token = req?.headers?.get("Authorization");
+  // console.log("token>>>", token);
   res.status(200).json({ name: "John Doe" });
 }
