@@ -91,15 +91,16 @@ const Post: NextPage<Props> = ({ post, relatedPost }) => {
             />
             <h2>This article is all about {post.title}</h2>
           </div>
-          <p>
-            <b>NOTE:</b> The following article on the {post.title} was
-            originally published on starsunfolded.com
-          </p>
+
           <div>
             {ReactHtmlParser(
               cleanHtmlString.replaceAll(/<\/?html>|<\/?head>|<\/?body>/g, "")
             )}
           </div>
+          {/* <p>
+            <b>NOTE:</b> The following article on the {post.title} was
+            originally published on starsunfolded.com
+          </p> */}
         </div>
         <div>
           <div className="col-span-1 rounded-lg shadow-xl bg-white dark:bg-neutral-800 p-4">
